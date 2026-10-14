@@ -1,0 +1,48 @@
+:root {
+  --drift: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    @keyframes drift-slow { from { translate: 0 calc(var(--drift) * -.5); } to { translate: 0 var(--drift); } }
+    @keyframes drift-fast { from { translate: 0 var(--drift); } to { translate: 0 calc(var(--drift) * -1); } }
+    @keyframes drift-hero { to { translate: 0 calc(var(--drift) * 1.2); } }
+
+    /* Three viewports of gradient slide past one fixed viewport as the page scrolls. */
+    @keyframes tint-travel { to {
+      translate: 0 -75%;
+    } }
+
+    @media (min-width: 1140px) {
+      .sheet-head {
+        animation: drift-hero linear both;
+        animation-timeline: scroll(root);
+        animation-range: 0 80vh;
+      }
+
+      .case:nth-of-type(even),
+      .record__section:is(:nth-of-type(1), :nth-of-type(even)),
+      .job:first-of-type {
+        animation: drift-slow linear both;
+        animation-timeline: view();
+        animation-range: cover;
+      }
+
+      .case__figure,
+      .job:not(:first-of-type) {
+        animation: drift-fast linear both;
+        animation-timeline: view();
+        animation-range: cover;
+      }
+
+      body::before {
+        animation: tint-travel ease both;
+        animation-timeline: scroll(root);
+      }
+    }
+  }
+}
+
+@media print {
+  *, *::before, *::after { animation: none !important; }
+}

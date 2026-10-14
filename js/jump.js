@@ -1,6 +1,3 @@
-// Same-page links scroll without moving focus. This moves the keyboard
-// to the target so the next Tab starts there.
-
 (function () {
   function land(id) {
     if (!id) return;
@@ -29,38 +26,4 @@
 
   window.addEventListener('hashchange', function () { land(hashId()); });
   if (location.hash) land(hashId());
-
-  // Mark the showing slide's index link as current. Watch the scroller,
-  // not clicks: swipes and arrow keys move it too.
-
-  function watchIndex(index) {
-    var reel = index.closest ? index.closest('.reel') : null;
-    var scroller = reel ? reel.querySelector('.reel__scroller') : null;
-    if (!scroller || !window.IntersectionObserver) return;
-
-    var links = {};
-    var slides = [];
-
-    Array.prototype.forEach.call(index.querySelectorAll('a[href^="#"]'), function (a) {
-      var slide = document.getElementById(a.getAttribute('href').slice(1));
-      if (!slide) return;
-      links[slide.id] = a;
-      slides.push(slide);
-    });
-
-    if (!slides.length) return;
-
-    var watcher = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        var link = links[entry.target.id];
-        if (!link) return;
-        if (entry.isIntersecting) link.setAttribute('aria-current', 'true');
-        else link.removeAttribute('aria-current');
-      });
-    }, { root: scroller, threshold: 0.6 });
-
-    slides.forEach(function (slide) { watcher.observe(slide); });
-  }
-
-  Array.prototype.forEach.call(document.querySelectorAll('.reel__index'), watchIndex);
 }());

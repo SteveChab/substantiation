@@ -1,5 +1,4 @@
 /* block, not swap: a missing icon glyph flashes a tofu box. */
-
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;
@@ -53,73 +52,24 @@
 }
 
 :root {
-  color-scheme: light dark;
-
-  --black: #000;
-  --white: #fff;
-  --ink-900: #111;
-  --paper-50: #fcfbfa;
-  --ink-050: #f2f0ee;
-  --paper-950: #0a0a0a;
-
-  --accent-300: #f89;
-  --accent-400: #f67;
-  --accent-600: #d24;
-  --accent-800: #b23;
-
-  --surface: var(--paper-50);
-  --surface-raised: var(--white);
-  --text: var(--ink-900);
-  --rule: rgba(17, 17, 17, .14);
-  --link: var(--accent-600);
-  --link-hover: var(--accent-800);
-  --focus-ring: var(--accent-600);
-  --selection: var(--accent-300);
-
+  color-scheme: light;
   --font-slab: 'Roboto Slab', Georgia, 'Times New Roman', serif;
   --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
-  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
-  --text-base: 1.0625rem;
-  --text-xl:   1.5625rem;
-  --leading-tight: 1.15;
-  --leading-snug: 1.35;
-  --leading-normal: 1.75;
-  --measure: 65ch;
-
-  --space-2: .5rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-12: 3rem;
-
-  --border-width: 1px;
-  --border-width-thick: 2px;
-  --radius-sm: 2px;
-
-  --z-overlay: 10000;
-
-  --duration-fast: .18s;
-  --ease-out: cubic-bezier(.22, 1, .36, 1);
-
-  --shell-max: 1560px;
+  --eyebrow-size: .8rem;
+  --eyebrow-weight: 700;
+  --eyebrow-track: .065em;
+  --eyebrow-leading: 1em;
+  --eyebrow-ink: #111;
+  --tape: #1a1a1a;
+  --tape-ink: #fff;
+  --tape-pad: 0.2em 0.35em 0.15em;
+  --tape-leading: 1em;
+  --track-display: -.015em;
+  --gap: 1.5rem;
   --shell-pad: 2.5rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --surface: var(--paper-950);
-    --surface-raised: var(--black);
-    --text: var(--ink-050);
-    --rule: rgba(242, 240, 238, .18);
-    --link: var(--accent-400);
-    --link-hover: var(--accent-300);
-    --focus-ring: var(--accent-400);
-    --selection: var(--accent-600);
-  }
-}
-
-@media (max-width: 767px) {
-  :root { --shell-pad: 1.25rem; }
+  --tint-pale: #ffe4de;
+  --tint-salmon: #fa8072;
+  --tint-coral: #ff6677;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -131,43 +81,30 @@ html {
 
 body {
   margin: 0;
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-weight: 300;
-  font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  padding-bottom: var(--space-8);
+  color: #111;
+  font: 400 1.0625rem / 1.75 var(--font-sans);
+  background: radial-gradient(
+    circle at 5% 50%,
+    var(--tint-pale),
+    var(--tint-coral),
+    var(--tint-salmon)
+  );
 }
 
-::selection { background: var(--selection); color: var(--ink-900); }
+::selection { background: #d4d4d4; color: #111; }
 
 img, iframe { max-width: 100%; vertical-align: middle; }
 
 img { height: auto; }
 
-h1, h2, h3, h4 { font-family: var(--font-slab); font-weight: 700; }
-
-a {
-  color: var(--link);
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: .22em;
-  text-decoration-skip-ink: none;
-  transition: text-decoration-thickness var(--duration-fast) var(--ease-out);
-}
-
-a:hover {
-  color: var(--link-hover);
-  text-decoration-thickness: 3px;
-}
-
 a:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid var(--focus-ring);
+  outline: 3px solid #111;
   outline-offset: 3px;
-  border-radius: var(--radius-sm);
 }
+
+/* Jump targets take focus only from jump.js, so they draw no ring. */
+[tabindex="-1"]:focus { outline: none; }
 
 .sr-only {
   position: absolute;
@@ -181,176 +118,229 @@ a:focus-visible,
   border: 0;
 }
 
-.skip-link {
-  position: absolute;
-  left: var(--space-2);
-  top: var(--space-2);
-  z-index: var(--z-overlay);
-  padding: var(--space-2) var(--space-4);
-  background: var(--surface-raised);
-  color: var(--text);
-  border: var(--border-width-thick) solid var(--focus-ring);
-  text-decoration: none;
-  transform: translateY(-250%);
-  transition: transform var(--duration-fast) var(--ease-out);
+.label,
+.nav__link,
+.site-footer__place,
+.jump__link,
+.case__meta,
+.case__org,
+.viewer__count,
+.viewer__close,
+.viewer__step,
+.viewer__nav a,
+.roles,
+.job__place,
+.role__title {
+  font-family: var(--font-sans);
+  font-size: var(--eyebrow-size);
+  font-weight: var(--eyebrow-weight);
+  letter-spacing: var(--eyebrow-track);
+  line-height: var(--eyebrow-leading);
+  text-transform: uppercase;
+  color: var(--eyebrow-ink);
 }
 
-.skip-link:focus { transform: translateY(0); }
+a:not([class]),
+.skip-link {
+  padding: .05em .35em .1em;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
 
-/* Jump targets take focus only from jump.js, so they draw no ring. */
+.nav__link[aria-current="page"],
+.jump__link,
+.viewer__close,
+.viewer__step,
+.viewer__nav a {
+  padding: var(--tape-pad);
+  border: 0;
+  background: var(--tape);
+  color: var(--tape-ink);
+  line-height: var(--tape-leading);
+  text-decoration: none;
+}
 
-[tabindex="-1"]:focus { outline: none; }
+a:not([class]):hover,
+.skip-link:hover,
+.nav__link:hover,
+.jump__link:hover,
+.viewer__close:hover,
+.viewer__step:hover,
+.viewer__nav a:hover {
+  background: #fff;
+  color: #111;
+  box-shadow: inset 0 0 0 2px #111;
+}
+
+.skip-link {
+  position: absolute;
+  left: .5rem;
+  top: .5rem;
+  z-index: 10000;
+  border: 2px solid #111;
+  transform: translateY(-250%);
+  transition: transform .18s cubic-bezier(.22, 1, .36, 1);
+}
+
+.skip-link:focus { transform: none; }
 
 .shell {
-  max-width: var(--shell-max);
+  max-width: 1560px;
   margin: 0 auto;
-  padding-left: var(--shell-pad);
-  padding-right: var(--shell-pad);
+  padding-inline: var(--shell-pad);
 }
 
 /* The auto margin on ב״ה, not space-between, keeps it right when it wraps. */
-
 .masthead {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: var(--space-4) var(--space-8);
-  flex-wrap: wrap;
-  padding-top: 1.1rem;
-  padding-bottom: 1.3rem;
+  gap: 1rem 2rem;
+  padding-block: 1.5rem;
 }
 
 .masthead__baruch {
   margin: 0;
   margin-inline-start: auto;
-  font-size: 16px;
   font-family: system-ui, sans-serif;
+  font-size: 16px;
   letter-spacing: .1em;
 }
 
 .nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: .9rem 1.6rem;
   align-items: baseline;
+  gap: 0 .25rem;
 }
 
 .nav__link {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--text);
+  padding: var(--tape-pad);
   text-decoration: none;
-  border-bottom: var(--border-width) solid var(--rule);
-  padding-bottom: 2px;
-  /* Lifts the target to 24px. Hover and current trade 3px between
-     padding and border so the underline holds still. */
-  padding-top: 3px;
 }
 
-.nav__link:hover {
-  color: var(--text);
-  border-bottom-color: var(--link);
-  border-bottom-width: 3px;
-  padding-bottom: 0;
+/* Plain nav text lines up with the page edge; its padding only shows on hover and when active. */
+.nav__link:first-child { margin-left: -.6em; }
+
+.sheet-head {
+  display: grid;
+  row-gap: 1.5rem;
+  padding: 1.5rem 0 5rem;
 }
 
-.nav__link[aria-current="page"] {
-  border-bottom: 3px solid var(--link);
-  padding-bottom: 0;
+.sheet-head__title {
+  margin: 0;
+  font: 900 clamp(3rem, .5rem + 12vw, 9rem) / .9 var(--font-slab);
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
 }
 
-@media (max-width: 767px) {
-  .masthead { column-gap: .75rem; }
-  .nav { gap: .9rem .75rem; }
+.sheet-head__lede {
+  max-width: 65ch;
+  margin: 0;
+  font-size: clamp(1.6rem, 1rem + 2.4vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.15em;
 }
 
 .site-footer {
-  margin-top: var(--space-8);
-  padding-top: var(--space-8);
-  border-top: var(--border-width) solid var(--rule);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4);
   align-items: center;
   justify-content: space-between;
-  font-weight: 400;
+  gap: 1rem;
+  padding-block: 6rem 2rem;
 }
 
 .site-footer__nav {
   display: flex;
   flex-wrap: wrap;
   gap: 1.1rem;
-  font-size: .8rem;
+  font-size: .85rem;
 }
 
-.site-footer__place {
-  margin: 0;
-  font-size: .72rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
+.site-footer__place { margin: 0; }
+
+@media (max-width: 767px) {
+  :root { --shell-pad: 1.25rem; }
+  .masthead { column-gap: .75rem; }
 }
 
-.sheet-head {
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-4);
+@media (max-width: 1139px) {
+  .sheet-head {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
 }
 
-.sheet-head__title {
-  margin: 0 0 .9rem;
-  font-size: 2.2rem;
-  line-height: var(--leading-tight);
-  letter-spacing: -.015em;
-}
+@media (min-width: 1140px) {
+  .sheet-head {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: 1fr auto auto 1fr;
+    gap: 2rem var(--gap);
+    padding: 3rem 0 6rem;
+  }
 
-.sheet-head__lede {
-  margin: 0 0 1.2rem;
-  font-size: 1.32rem;
-  line-height: 1.62;
-  max-width: var(--measure);
-}
+  /* Set sideways and turned a half turn, so it reads bottom to top. */
+  .sheet-head__title {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 4;
+    justify-self: start;
+    font-size: clamp(4.5rem, 2rem + 5vw, 8rem);
+    line-height: .85;
+    text-align: end;
+    white-space: nowrap;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
 
-.sheet-head__body {
-  margin: 0 0 1.2rem;
-  font-size: 1.06rem;
-  line-height: 1.78;
-  max-width: var(--measure);
-}
-
-.label {
-  font-family: var(--font-sans);
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--text);
-  text-align: left;
+  .sheet-head__lede {
+    grid-column: 4 / -1;
+    grid-row: 2;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
   *, *::before, *::after {
-    animation-duration: .001ms !important;
-    animation-iteration-count: 1 !important;
-    animation-delay: 0ms !important;
     transition-duration: .001ms !important;
     transition-delay: 0ms !important;
   }
+}
 
+@media (forced-colors: active) {
+  a { text-decoration: underline; }
 }
 
 @media print {
-  body {
-    background: #fff;
-    color: #000;
-    font-size: 11pt;
-    padding-bottom: 0;
+  *, *::before, *::after {
+    background: none !important;
+    box-shadow: none !important;
+    translate: none !important;
   }
 
-  a { color: #000; }
+  body {
+    color: #000;
+    font-size: 11pt;
+  }
+
+  a:not([class]) { color: #000; }
 
   .skip-link,
   .masthead { display: none; }
+
+  .sheet-head__title {
+    font-size: 26pt;
+    line-height: 1.1;
+    letter-spacing: 0;
+    color: #000;
+  }
+
+  .sheet-head__lede { font-size: 12pt; }
+  .site-footer { color: #000; }
 }
