@@ -67,6 +67,7 @@
   --track-display: -.015em;
   --gap: 1.5rem;
   --shell-pad: 2.5rem;
+  --edge: max(var(--shell-pad), calc((100% - 1560px) / 2 + var(--shell-pad)));
   --tint-pale: #ffe4de;
   --tint-salmon: #fa8072;
   --tint-coral: #ff6677;
@@ -120,6 +121,8 @@ a:focus-visible,
 
 .label,
 .nav__link,
+.to-top,
+.site-footer__link,
 .site-footer__place,
 .jump__link,
 .case__meta,
@@ -151,6 +154,8 @@ a:not([class]),
 }
 
 .nav__link[aria-current="page"],
+.to-top,
+.site-footer__link,
 .jump__link,
 .viewer__close,
 .viewer__step,
@@ -166,6 +171,8 @@ a:not([class]),
 a:not([class]):hover,
 .skip-link:hover,
 .nav__link:hover,
+.to-top:hover,
+.site-footer__link:hover,
 .jump__link:hover,
 .viewer__close:hover,
 .viewer__step:hover,
@@ -193,29 +200,42 @@ a:not([class]):hover,
   padding-inline: var(--shell-pad);
 }
 
-/* The auto margin on ב״ה, not space-between, keeps it right when it wraps. */
+/* Nav and Top are fixed at the same height; ב״ה scrolls away and Top takes its corner. */
 .masthead {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem 2rem;
+  justify-content: flex-end;
+  align-items: center;
   padding-block: 1.5rem;
+}
+
+.nav,
+.to-top {
+  position: fixed;
+  top: 1.5rem;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  height: 1.75rem;
+}
+
+.nav {
+  left: var(--edge);
+  gap: 0 .25rem;
+}
+
+/* Top is its own tape box, so it centers on the nav's line by its own height: 1em of text plus .35em of tape padding. */
+.to-top {
+  top: calc(1.5rem + (1.75rem - 1.35em) / 2);
+  right: var(--edge);
+  height: auto;
 }
 
 .masthead__baruch {
   margin: 0;
-  margin-inline-start: auto;
   font-family: system-ui, sans-serif;
   font-size: 16px;
+  line-height: 1.75rem;
   letter-spacing: .1em;
-}
-
-.nav {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0 .25rem;
 }
 
 .nav__link {
@@ -259,8 +279,7 @@ a:not([class]):hover,
 .site-footer__nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem;
-  font-size: .85rem;
+  gap: .5rem 1.1rem;
 }
 
 .site-footer__place { margin: 0; }
@@ -329,7 +348,8 @@ a:not([class]):hover,
     font-size: 11pt;
   }
 
-  a:not([class]) { color: #000; }
+  a:not([class]),
+  .site-footer__link { color: #000; }
 
   .skip-link,
   .masthead { display: none; }

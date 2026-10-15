@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Design System: Steve Chabassol</title>
+  <meta name="description" content="The colors, type, layout, components, and accessibility choices behind chabassol.com.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://chabassol.com/design/">
+
+  <!-- Unlisted on purpose: only this page's own nav names it, it is not in the sitemap, and it is kept out of search. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <meta name="author" content="Steve Chabassol">
+  <meta name="theme-color" content="#fcfbfa">
+
+  <link rel="icon" href="../favicon.ico" sizes="32x32">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../icon.png">
+
+  <link rel="preload" href="../fonts/roboto-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/roboto-slab-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/material-symbols-subset.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/resume.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/design.css">
+</head>
+
+<body id="top">
+  <a class="skip-link" href="#main">Skip to the main text</a>
+
+  <header class="shell masthead">
+    <nav class="nav" aria-label="Main">
+      <a class="nav__link" href="../">chabassol.com</a>
+      <a class="nav__link" href="../resume/">Resume</a>
+      <a class="nav__link" href="./" aria-current="page">Design</a>
+    </nav>
+
+    <a class="to-top" href="#top">Top<span class="sr-only"> of the page</span></a>
+
+    <p class="masthead__baruch" title="Baruch Hashem, blessed is the name"><span class="sr-only">Baruch Hashem, blessed is the name </span><span lang="he">ב״ה</span></p>
+  </header>
+
+  <main class="shell" id="main" tabindex="-1">
+
+    <header class="sheet-head">
+      <h1 class="sheet-head__title">Design</h1>
+      <p class="sheet-head__lede">Every color, face, and component on this site.</p>
+      <p class="sheet-head__body">This is the reference for how chabassol.com is built and why. A Swiss grid, two Roboto families, one salmon gradient, and space doing the work that rules and borders usually do. Every demo below runs on the site's own stylesheets, so this page stays true when the site changes.</p>
+    </header>
+
+    <nav class="toc-wrap" aria-labelledby="toc-head">
+      <h2 class="label jump__label" id="toc-head">Contents</h2>
+      <ul class="toc">
+        <li><a class="jump__link" href="#principles">Principles</a></li>
+        <li><a class="jump__link" href="#color">Color</a></li>
+        <li><a class="jump__link" href="#type">Type</a></li>
+        <li><a class="jump__link" href="#layout">Layout and space</a></li>
+        <li><a class="jump__link" href="#components">Components</a></li>
+        <li><a class="jump__link" href="#icons">Icons</a></li>
+        <li><a class="jump__link" href="#motion">Motion</a></li>
+        <li><a class="jump__link" href="#accessibility">Accessibility</a></li>
+        <li><a class="jump__link" href="#responsive">Responsive and print</a></li>
+        <li><a class="jump__link" href="#assets">Assets and files</a></li>
+      </ul>
+    </nav>
+
+    <div class="specs">
+
+      <section class="spec" id="principles" tabindex="-1" aria-labelledby="principles-h">
+        <h2 class="label spec__label" id="principles-h">Principles</h2>
+        <div class="spec__body">
+          <ul class="principles">
+            <li>
+              <h3 class="principles__name">Swiss grid</h3>
+              <p class="principles__line">Twelve columns, a 1.5rem to 2rem gutter, and a wide left column for vertical labels. Content snaps to the grid or it does not ship.</p>
+            </li>
+            <li>
+              <h3 class="principles__name">Two faces</h3>
+              <p class="principles__line">Roboto Slab for anything that announces, Roboto for everything that explains. No third family, not even for code.</p>
+            </li>
+            <li>
+              <h3 class="principles__name">One color family</h3>
+              <p class="principles__line">Salmon, coral, and a pale blush, all in one gradient. Everything else is black or white.</p>
+            </li>
+            <li>
+              <h3 class="principles__name">Space, not rules</h3>
+              <p class="principles__line">Padding and margins make the structure. No dividers, grid lines, or boxes in the layout. Black tape marks what you can act on.</p>
+            </li>
+            <li>
+              <h3 class="principles__name">Light only</h3>
+              <p class="principles__line">One light theme, declared with color-scheme. Contrast is tuned for the gradient, not left to chance.</p>
+            </li>
+            <li>
+              <h3 class="principles__name">Accessible first</h3>
+              <p class="principles__line">Keyboard, screen reader, reduced motion, forced colors, and print are designed in, not patched on.</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="spec" id="color" tabindex="-1" aria-labelledby="color-h">
+        <h2 class="label spec__label" id="color-h">Color</h2>
+        <div class="spec__body">
+          <p class="spec__intro">A black and white system with one warm family. The three tints exist only inside the page gradient and the gallery tiles. Text always sits in black, so the weakest pairing on the page is black on coral.</p>
+
+          <div class="demo">
+            <h3 class="demo__title">Palette</h3>
+            <div class="plate">
+              <ul class="swatches">
+                <li>
+                  <span class="swatch__chip" style="background:#111"></span>
+                  <p class="swatch__name">Ink</p>
+                  <p class="swatch__meta">#111111<br>Text, eyebrows, focus ring</p>
+                </li>
+                <li>
+                  <span class="swatch__chip" style="background:#1a1a1a"></span>
+                  <p class="swatch__name">Tape</p>
+                  <p class="swatch__meta">--tape #1a1a1a<br>Buttons and tags</p>
+                </li>
+                <li>
+                  <span class="swatch__chip" style="background:#fff;box-shadow:inset 0 0 0 1px #d4d4d4"></span>
+                  <p class="swatch__name">Tape ink</p>
+                  <p class="swatch__meta">--tape-ink #ffffff<br>Text on tape, hover fill</p>
+                </li>
+                <li>
+                  <span class="swatch__chip" style="background:#ffe4de"></span>
+                  <p class="swatch__name">Pale</p>
+                  <p class="swatch__meta">--tint-pale #ffe4de<br>Gradient start</p>
+                </li>
+                <li>
+                  <span class="swatch__chip" style="background:#ff6677"></span>
+                  <p class="swatch__name">Coral</p>
+                  <p class="swatch__meta">--tint-coral #ff6677<br>Gradient middle, tile fill</p>
+                </li>
+                <li>
+                  <span class="swatch__chip" style="background:#fa8072"></span>
+                  <p class="swatch__name">Salmon</p>
+                  <p class="swatch__meta">--tint-salmon #fa8072<br>Gradient end</p>
+                </li>
+                <li>
+                  <span class="swatch__chip" style="background:#d4d4d4"></span>
+                  <p class="swatch__name">Selection</p>
+                  <p class="swatch__meta">#d4d4d4<br>Selected text</p>
+                </li>
+                <li>
+                  <span class="swatch__chip" style="background:#eee"></span>
+                  <p class="swatch__name">Mat</p>
+                  <p class="swatch__meta">#eeeeee<br>Behind images in the viewer</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Page gradient</h3>
+            <div class="gradient-strip"></div>
+            <p class="demo__note">radial-gradient(circle at 5% 50%, pale, coral, salmon) on the body. The header has no background of its own: the nav and Top float over the gradient and the page as tape.</p>
+          </div>
+
+          <div class="demo">
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Contrast ratios">
+              <table class="data">
+                <caption>Contrast ratios</caption>
+                <thead>
+                  <tr><th scope="col">Pairing</th><th scope="col">Ratio</th><th scope="col">Where</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Ink on white</th><td>18.88 : 1</td><td>Viewer, print</td></tr>
+                  <tr><th scope="row">White on tape</th><td>17.40 : 1</td><td>Buttons, tags, links</td></tr>
+                  <tr><th scope="row">Ink on pale</th><td>15.65 : 1</td><td>Gradient start</td></tr>
+                  <tr><th scope="row">Ink on selection</th><td>12.74 : 1</td><td>Selected text</td></tr>
+                  <tr><th scope="row">Ink on salmon</th><td>7.55 : 1</td><td>Gradient end, passes AAA</td></tr>
+                  <tr><th scope="row">Ink on coral</th><td>6.67 : 1</td><td>Gradient middle, passes AA, and AAA for large text</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="spec" id="type" tabindex="-1" aria-labelledby="type-h">
+        <h2 class="label spec__label" id="type-h">Type</h2>
+        <div class="spec__body">
+          <p class="spec__intro">Roboto Slab at weight 900 does the shouting, tightly leaded and slightly tracked in. Roboto at light weight carries the big ledes, and at regular weight carries the reading. Both fonts are self-hosted variable files, weights 100 to 900.</p>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Display.</strong> Roboto Slab 900, clamp(3rem, .5rem + 12vw, 9rem), line height .9, tracking −.015em. Set vertical on wide screens.</p>
+            <p class="spec-display">Steve here.</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Case title.</strong> Roboto Slab 900, clamp(2.6rem, 1rem + 4.6vw, 6.5rem), line height .88.</p>
+            <p class="case__title" style="margin:0">The XPS Relaunch</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Job heading.</strong> Roboto Slab 900, clamp(2rem, 1rem + 3vw, 4.5rem), line height .92.</p>
+            <p class="job__org" style="margin:0">Dell Technologies</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Small heading.</strong> Roboto Slab 900, 1.5rem, line height 1. Used in the image viewer.</p>
+            <p class="viewer__title">Image 3 of 6</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Lede.</strong> Roboto 300, clamp(1.6rem, 1rem + 2.4vw, 3.5rem), line height 1.15.</p>
+            <p class="spec-lede">Design engineer.<br>Accessible UI.<br>AI-augmented development.</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Case body.</strong> Roboto 400, 1.1875rem, line height 1.7, measure 38rem.</p>
+            <p class="spec-body-wide">An outside agency designed the campaign. My job was to make it real on Dell's site. The pages shipped on time, and XPS sold out in two countries.</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Body.</strong> Roboto 400, 1.06rem, line height 1.78, measure 65ch. Intro and record text. The page default is 1.0625rem with a line height of 1.75.</p>
+            <p class="sheet-head__body" style="margin:0">Before Dell, I spent fifteen years at Carnegie Mellon University, where I designed the templates and brand shared by hundreds of university sites and crafted web accessibility guidelines.</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Eyebrow.</strong> Roboto 700, .8rem, uppercase, tracking .065em. One style for every label, nav item, and tag.</p>
+            <p class="label" style="margin:0">Implementation Lead</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Term.</strong> Roboto Slab 700, 1rem. Used for run-in headings and list terms.</p>
+            <p class="demo__title" style="margin:0">Accessibility Standards</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Caption.</strong> Roboto 400, .9rem, line height 1.35.</p>
+            <p class="case__caption" style="margin:0">Books, print pieces, banners, and the website.</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Figures.</strong> Dates and numbers use tabular figures so columns line up.</p>
+            <p class="role__dates">0123456789</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="spec" id="layout" tabindex="-1" aria-labelledby="layout-h">
+        <h2 class="label spec__label" id="layout-h">Layout and space</h2>
+        <div class="spec__body">
+          <p class="spec__intro">At 1140px and wider the page runs on twelve columns inside a shell that tops out at 1560px. Below that, everything collapses to one column no wider than 40rem. Section labels stand vertical in column one.</p>
+
+          <div class="demo">
+            <h3 class="demo__title">The twelve columns</h3>
+            <div class="grid-demo" aria-hidden="true">
+              <span class="cell cell--tint">1</span><span class="cell cell--tint">2</span><span class="cell cell--tint">3</span><span class="cell cell--tint">4</span><span class="cell cell--tint">5</span><span class="cell cell--tint">6</span><span class="cell cell--tint">7</span><span class="cell cell--tint">8</span><span class="cell cell--tint">9</span><span class="cell cell--tint">10</span><span class="cell cell--tint">11</span><span class="cell cell--tint">12</span>
+            </div>
+            <p class="demo__note">Gutter 1.5rem (--gap) on the page head and the case list, 2rem inside case and record sections. Page padding 2.5rem, or 1.25rem under 768px (--shell-pad).</p>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Page head</h3>
+            <div class="grid-demo" aria-hidden="true">
+              <span class="cell cell--tall" style="grid-column:1 / span 2">Title, vertical</span>
+              <span class="cell cell--tall" style="grid-column:4 / -1">Lede</span>
+              <span class="cell" style="grid-column:4 / span 6">Body</span>
+            </div>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Case study</h3>
+            <div class="grid-demo" aria-hidden="true">
+              <span class="cell cell--tall" style="grid-column:1;grid-row:1 / span 2">Meta</span>
+              <span class="cell" style="grid-column:2 / -1">Title</span>
+              <span class="cell cell--tall" style="grid-column:2 / span 6">Body</span>
+              <span class="cell cell--tall" style="grid-column:8 / span 5">Figure</span>
+            </div>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Record section</h3>
+            <div class="grid-demo" aria-hidden="true">
+              <span class="cell cell--tall" style="grid-column:1">Label</span>
+              <span class="cell cell--tall" style="grid-column:2 / span 8">Body</span>
+            </div>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Spacing in use</h3>
+            <ul class="space-list">
+              <li class="space"><span class="space__name">.25rem</span><span class="space__bar" style="width:.25rem"></span></li>
+              <li class="space"><span class="space__name">.5rem</span><span class="space__bar" style="width:.5rem"></span></li>
+              <li class="space"><span class="space__name">1rem</span><span class="space__bar" style="width:1rem"></span></li>
+              <li class="space"><span class="space__name">1.5rem</span><span class="space__bar" style="width:1.5rem"></span></li>
+              <li class="space"><span class="space__name">2rem</span><span class="space__bar" style="width:2rem"></span></li>
+              <li class="space"><span class="space__name">2.5rem</span><span class="space__bar" style="width:2.5rem"></span></li>
+              <li class="space"><span class="space__name">5rem</span><span class="space__bar" style="width:5rem"></span></li>
+              <li class="space"><span class="space__name">7rem</span><span class="space__bar" style="width:7rem"></span></li>
+              <li class="space"><span class="space__name">8rem</span><span class="space__bar" style="width:8rem"></span></li>
+            </ul>
+            <p class="demo__note">Small steps (.25 to 1.5rem) sit inside components. 2 to 2.5rem separates items. 5 to 8rem separates sections: 7rem between record sections, 8rem between case studies.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="spec" id="components" tabindex="-1" aria-labelledby="components-h">
+        <h2 class="label spec__label" id="components-h">Components</h2>
+        <div class="spec__body">
+          <p class="spec__intro">Interactive things are black tape: a dark ground, white text, and a tight eyebrow-sized label. Hover flips it to white with a 2px inset ring. Focus adds a 3px black outline offset by 3px. Nothing else on the page looks like this, so anything taped is something you can use.</p>
+
+          <div class="demo">
+            <h3 class="demo__title">Inline link</h3>
+            <ul class="states">
+              <li><span class="states__name label">Default</span><a href="#components">Read the case study</a></li>
+              <li><span class="states__name label">Hover</span><a class="is-hover" href="#components">Read the case study</a></li>
+              <li><span class="states__name label">Focus</span><a class="is-focus" href="#components">Read the case study</a></li>
+            </ul>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Tape button</h3>
+            <ul class="states">
+              <li><span class="states__name label">Default</span><span class="jump__link">Previous</span></li>
+              <li><span class="states__name label">Hover</span><span class="jump__link is-hover">Previous</span></li>
+              <li><span class="states__name label">Focus</span><span class="jump__link is-focus">Previous</span></li>
+              <li><span class="states__name label">Viewer close</span><span class="viewer__close">Close</span></li>
+              <li><span class="states__name label">Viewer step</span><span class="viewer__step">Next</span></li>
+              <li><span class="states__name label">Top</span><span class="to-top">Top</span></li>
+              <li><span class="states__name label">Footer link</span><span class="site-footer__link">Connect on LinkedIn</span></li>
+            </ul>
+            <p class="demo__note">The Top button and the footer links use the same tape style. Top is fixed at the top right, centered on the nav's line, and slides in from above once you scroll past the first screen.</p>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Navigation</h3>
+            <div style="padding-left:.6em">
+              <nav class="nav" aria-label="Navigation states">
+                <span class="nav__link">Default</span>
+                <span class="nav__link is-hover">Hover</span>
+                <span class="nav__link" aria-current="page">Current</span>
+              </nav>
+            </div>
+            <p class="demo__note">Plain text lines up with the page edge. The padding only appears on hover and on the current page. The real nav is fixed at the top left, so it stays with you as you scroll, and it floats over whatever passes beneath it.</p>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Skip link</h3>
+            <span class="skip-link demo-skip">Skip to the main text</span>
+            <p class="demo__note">Hidden off screen until it takes keyboard focus, then it slides in over .18s. Tab once on any page to see it.</p>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Eyebrow label</h3>
+            <p class="label" style="margin:0">On this page</p>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Case meta</h3>
+            <p class="case__meta demo-meta"><span class="case__org">Dell Technologies</span> Implementation Lead</p>
+            <p class="demo__note">An icon, an organization, and a role. On wide screens the whole line is set sideways in the left column.</p>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Jump item</h3>
+            <ul class="jump__list">
+              <li class="jump__item">
+                <span class="jump__icon" aria-hidden="true">&#xeb9b;</span>
+                <a class="jump__link" href="#components">The XPS Relaunch</a>
+                <p class="jump__line">Led implementation for an embargoed global launch covered by Reuters and Ars Technica.</p>
+              </li>
+              <li class="jump__item">
+                <span class="jump__icon" aria-hidden="true">&#xe66a;</span>
+                <a class="jump__link" href="#components">Fifteen Years of cmu.edu</a>
+                <p class="jump__line">Fifteen years of homepages for my alma mater, with the front end in my hands.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Gallery tiles</h3>
+            <ul class="gallery__thumbs">
+              <li><div class="gallery__thumb"><span class="gallery__tile"><img src="../images/xps-hero.jpg" alt="" loading="lazy" decoding="async"></span></div></li>
+              <li><div class="gallery__thumb"><span class="gallery__tile"><img src="../images/cmu-2019.jpg" alt="" loading="lazy" decoding="async"></span></div></li>
+              <li><div class="gallery__thumb"><span class="gallery__tile"><img src="../images/mm-books.jpg" alt="" loading="lazy" decoding="async"></span></div></li>
+              <li><div class="gallery__thumb"><span class="gallery__tile"><img src="../images/gallery-built.jpg" alt="" loading="lazy" decoding="async"></span></div></li>
+              <li><div class="gallery__thumb"><span class="gallery__tile"><img src="../images/dell-jp.jpg" alt="" loading="lazy" decoding="async"></span></div></li>
+              <li><div class="gallery__thumb gallery__thumb--video"><span class="gallery__tile"></span></div></li>
+            </ul>
+            <p class="demo__note">Each tile is 3.75rem square with a .25rem gap. The image is zoomed 3x, turned to grayscale, inverted, and blended over coral, so a screenshot becomes an abstract detail. Each tile opens a full-page carousel at that image. The last tile shows the video variant.</p>
+          </div>
+
+          <div class="demo demo-lists">
+            <div>
+              <h3 class="demo__title">Roles</h3>
+              <ul class="roles">
+                <li>Design Systems</li>
+                <li>Accessibility Standards</li>
+                <li>Front-End Engineering</li>
+                <li>AI-Augmented Development</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="demo__title">Role with bullets</h3>
+              <div class="role">
+                <div class="role__head">
+                  <p class="role__title">Implementation Lead</p>
+                  <p class="role__dates">0123456789</p>
+                </div>
+                <ul class="role__list">
+                  <li>Led implementation of the online experience for an embargoed global relaunch.</li>
+                  <li>Learned GSAP while building with it, and shipped on time.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="demo__title">Terms</h3>
+              <dl class="terms">
+                <dt>Accessibility</dt>
+                <dd>Standards written for a research university and a process written for Dell's experiments.</dd>
+                <dt>Design systems</dt>
+                <dd>Templates, authoring tools, and brand standards shared by hundreds of sites.</dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="spec" id="icons" tabindex="-1" aria-labelledby="icons-h">
+        <h2 class="label spec__label" id="icons-h">Icons</h2>
+        <div class="spec__body">
+          <p class="spec__intro">One glyph per case study, drawn from Material Symbols Outlined. The font is a 3KB subset holding only these twelve, so adding an icon means re-subsetting the file. Icons are decorative and always hidden from screen readers.</p>
+          <ul class="glyphs">
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xeb9b;</span><span>The XPS Relaunch<span class="glyph__code">U+EB9B</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xe66a;</span><span>Fifteen Years of cmu.edu<span class="glyph__code">U+E66A</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xea4b;</span><span>Experiments<span class="glyph__code">U+EA4B</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xe1bd;</span><span>University Design System<span class="glyph__code">U+E1BD</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xf06c;</span><span>AI Code Review Workspace<span class="glyph__code">U+F06C</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xf0c5;</span><span>Why the CMS Had to Change<span class="glyph__code">U+F0C5</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xf233;</span><span>Experience Design Summit<span class="glyph__code">U+F233</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xe8d4;</span><span>Moving 250 Sites<span class="glyph__code">U+E8D4</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xe90f;</span><span>Patent Pending<span class="glyph__code">U+E90F</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xe413;</span><span>Accessible Image Gallery<span class="glyph__code">U+E413</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xe92c;</span><span>Accessibility Standards<span class="glyph__code">U+E92C</span></span></li>
+            <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xea19;</span><span>Books for Manifest Ministries<span class="glyph__code">U+EA19</span></span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="spec" id="motion" tabindex="-1" aria-labelledby="motion-h">
+        <h2 class="label spec__label" id="motion-h">Motion</h2>
+        <div class="spec__body">
+          <p class="spec__intro">Motion is subtle and written in CSS. It is tied to scroll position rather than to timers. The drift only runs for people who have not asked for reduced motion, and the Top button fades instead of sliding for them. None of it runs in browsers without scroll-driven animation: the content just sits still and Top stays hidden. Scripts only manage focus and the image viewer; nothing moves in JavaScript.</p>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Motion specifications">
+            <table class="data">
+              <caption>What moves</caption>
+              <thead>
+                <tr><th scope="col">Element</th><th scope="col">Effect</th><th scope="col">Range</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Page head</th><td>Drifts down 6rem as it leaves</td><td>First 80vh of scroll, wide screens</td></tr>
+                <tr><th scope="row">Case sections</th><td>Alternate slow and fast drift of 5rem</td><td>While in view, wide screens</td></tr>
+                <tr><th scope="row">Top button</th><td>Slides down from above, or fades in when motion is reduced</td><td>101vh to 111vh of scroll</td></tr>
+                <tr><th scope="row">Skip link</th><td>Slides in on focus, .18s</td><td>cubic-bezier(.22, 1, .36, 1)</td></tr>
+                <tr><th scope="row">Image viewer</th><td>Smooth scroll between slides</td><td>Motion allowed only</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="spec" id="accessibility" tabindex="-1" aria-labelledby="accessibility-h">
+        <h2 class="label spec__label" id="accessibility-h">Accessibility</h2>
+        <div class="spec__body">
+          <div class="demo">
+            <dl class="terms">
+              <dt>Keyboard</dt>
+              <dd>Every control is a link or button. A skip link is first in the tab order. Focus is a 3px black outline offset 3px, visible on every ground.</dd>
+              <dt>Focus management</dt>
+              <dd>A small script moves focus to the target after an in-page jump, so keyboard and screen reader users land where the page scrolled to.</dd>
+              <dt>Structure</dt>
+              <dd>One h1 per page, labelled landmarks, sections tied to their headings, and a language attribute on the Hebrew mark.</dd>
+              <dt>Screen readers</dt>
+              <dd>Decorative icons and grid tiles are hidden. Controls carry full names such as "Open image 1 of 6". Text that only sighted users need is marked sr-only.</dd>
+              <dt>Contrast</dt>
+              <dd>Black text on the gradient never drops below 6.67 to 1. Taped controls run 17.4 to 1.</dd>
+              <dt>Motion</dt>
+              <dd>The scroll drift is off when prefers-reduced-motion is set, Top fades instead of sliding, and transitions shrink to nothing.</dd>
+              <dt>Forced colors</dt>
+              <dd>Links regain their underline in Windows high contrast mode.</dd>
+              <dt>Zoom and reflow</dt>
+              <dd>Type is set in rem and clamp, text size adjustment is set to 100%, and nothing scrolls sideways at narrow widths.</dd>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="spec" id="responsive" tabindex="-1" aria-labelledby="responsive-h">
+        <h2 class="label spec__label" id="responsive-h">Responsive and print</h2>
+        <div class="spec__body">
+          <div class="demo">
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Breakpoints">
+              <table class="data">
+                <caption>Breakpoints</caption>
+                <thead>
+                  <tr><th scope="col">Width</th><th scope="col">What changes</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">700px and up</th><td>Jump items and principles run two columns, terms split into term and definition</td></tr>
+                  <tr><th scope="row">Under 768px</th><td>Page padding drops to 1.25rem</td></tr>
+                  <tr><th scope="row">Under 1140px</th><td>One centered column, 40rem at most</td></tr>
+                  <tr><th scope="row">1140px and up</th><td>Twelve-column grid, vertical labels, scroll-driven drift</td></tr>
+                  <tr><th scope="row">1560px</th><td>Shell stops growing and centers</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="demo">
+            <h3 class="demo__title">Print</h3>
+            <p class="spec__intro" style="margin:0">Printing strips color and motion and hides the header, the jump list, and the image viewer. Page heads drop to 26pt, body text to 10.5 or 11pt, and sections avoid page breaks, set apart by thin gray rules. On the resume, external links print their addresses.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="spec" id="assets" tabindex="-1" aria-labelledby="assets-h">
+        <h2 class="label spec__label" id="assets-h">Assets and files</h2>
+        <div class="spec__body">
+          <div class="demo">
+            <h3 class="demo__title">Monogram</h3>
+            <img class="favicon" src="../favicon.svg" width="64" height="64" alt="A black square holding the letters SC in white slab type.">
+            <p class="demo__note">favicon.svg, favicon.ico, and icon.png for touch devices.</p>
+          </div>
+
+          <div class="demo demo-share">
+            <h3 class="demo__title">Share card</h3>
+            <img src="../share-card.png" width="1200" height="630" loading="lazy" decoding="async" alt="The name Steve Chabassol in large slab letters under a black SC monogram on a salmon gradient, with the lines: Design engineer. Accessible UI. AI-augmented development.">
+            <p class="demo__note">1200 by 630, used for link previews.</p>
+          </div>
+
+          <div class="demo">
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Stylesheets and scripts">
+              <table class="data">
+                <caption>Stylesheets and scripts</caption>
+                <thead>
+                  <tr><th scope="col">File</th><th scope="col">Holds</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">css/site.css</th><td>Fonts, tokens, base type, links and tape, header, page head, footer</td></tr>
+                  <tr><th scope="row">css/home.css</th><td>Jump list, case studies, gallery tiles, image viewer</td></tr>
+                  <tr><th scope="row">css/resume.css</th><td>Record sections, jobs, roles, terms, degrees</td></tr>
+                  <tr><th scope="row">css/animations.css</th><td>Scroll-driven motion, behind motion and support checks</td></tr>
+                  <tr><th scope="row">css/design.css</th><td>Layout for this page only</td></tr>
+                  <tr><th scope="row">js/jump.js</th><td>Focus after in-page jumps</td></tr>
+                  <tr><th scope="row">js/viewer.js</th><td>Image viewer carousel</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Fonts</h3>
+            <p class="spec__intro" style="margin:0">Roboto, Roboto Slab, and a Material Symbols subset, all self-hosted as woff2 under fonts/. Text faces load with swap. The icon font loads with block, so a missing glyph never flashes as an empty box.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <footer class="shell site-footer">
+    <nav class="site-footer__nav" aria-label="Elsewhere">
+      <a class="site-footer__link" href="../">Back to chabassol.com</a>
+      <a class="site-footer__link" href="https://www.linkedin.com/in/stevechabassol/">Connect on LinkedIn</a>
+    </nav>
+    <p class="site-footer__place">Pittsburgh, PA, USA</p>
+  </footer>
+
+  <script src="../js/jump.js" defer></script>
+</body>
+
+</html>

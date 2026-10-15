@@ -8,11 +8,6 @@
     @keyframes drift-fast { from { translate: 0 var(--drift); } to { translate: 0 calc(var(--drift) * -1); } }
     @keyframes drift-hero { to { translate: 0 calc(var(--drift) * 1.2); } }
 
-    /* Three viewports of gradient slide past one fixed viewport as the page scrolls. */
-    @keyframes tint-travel { to {
-      translate: 0 -75%;
-    } }
-
     @media (min-width: 1140px) {
       .sheet-head {
         animation: drift-hero linear both;
@@ -20,6 +15,7 @@
         animation-range: 0 80vh;
       }
 
+      .spec,
       .case:nth-of-type(even),
       .record__section:is(:nth-of-type(1), :nth-of-type(even)),
       .job:first-of-type {
@@ -28,18 +24,40 @@
         animation-range: cover;
       }
 
+      .spec:nth-of-type(odd),
       .case__figure,
       .job:not(:first-of-type) {
         animation: drift-fast linear both;
         animation-timeline: view();
         animation-range: cover;
       }
-
-      body::before {
-        animation: tint-travel ease both;
-        animation-timeline: scroll(root);
-      }
     }
+  }
+}
+
+/* Top shares ב״ה's corner, so without scroll-driven animation it stays hidden. */
+.to-top { visibility: hidden; }
+
+/* Once the page is 1vh past the fold Top slides down from above, or fades when motion is reduced. */
+@supports (animation-timeline: scroll()) {
+  @keyframes top-slide {
+    from { translate: 0 -5rem; visibility: hidden; }
+    to { translate: 0 0; visibility: visible; }
+  }
+
+  @keyframes top-fade {
+    from { opacity: 0; visibility: hidden; }
+    to { opacity: 1; visibility: visible; }
+  }
+
+  .to-top {
+    animation: top-slide linear both;
+    animation-timeline: scroll(root);
+    animation-range: 101vh 111vh;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .to-top { animation-name: top-fade; }
   }
 }
 
