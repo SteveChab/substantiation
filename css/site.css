@@ -59,7 +59,7 @@
   --eyebrow-weight: 700;
   --eyebrow-track: .065em;
   --eyebrow-leading: 1em;
-  --eyebrow-ink: #111;
+  --eyebrow-ink: #000;
   --tape: #1a1a1a;
   --tape-ink: #fff;
   --tape-pad: 0.2em 0.35em 0.15em;
@@ -82,7 +82,7 @@ html {
 
 body {
   margin: 0;
-  color: #111;
+  color: var(--eyebrow-ink);
   font: 400 1.0625rem / 1.75 var(--font-sans);
   background: radial-gradient(
     circle at 5% 50%,
@@ -92,7 +92,7 @@ body {
   );
 }
 
-::selection { background: #d4d4d4; color: #111; }
+::selection { background: #d4d4d4; color: var(--eyebrow-ink); }
 
 img, iframe { max-width: 100%; vertical-align: middle; }
 
@@ -100,7 +100,7 @@ img { height: auto; }
 
 a:focus-visible,
 [tabindex]:focus-visible {
-  outline: 3px solid #111;
+  outline: 3px solid var(--eyebrow-ink);
   outline-offset: 3px;
 }
 
@@ -146,8 +146,8 @@ a:focus-visible,
 a:not([class]),
 .skip-link {
   padding: .05em .35em .1em;
-  background: #111;
-  color: #fff;
+  background: var(--eyebrow-ink);
+  color: var(--tape-ink);
   text-decoration: none;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -177,9 +177,9 @@ a:not([class]):hover,
 .viewer__close:hover,
 .viewer__step:hover,
 .viewer__nav a:hover {
-  background: #fff;
-  color: #111;
-  box-shadow: inset 0 0 0 2px #111;
+  background: var(--tape-ink);
+  color: var(--eyebrow-ink);
+  box-shadow: inset 0 0 0 2px var(--eyebrow-ink);
 }
 
 .skip-link {
@@ -187,7 +187,7 @@ a:not([class]):hover,
   left: .5rem;
   top: .5rem;
   z-index: 10000;
-  border: 2px solid #111;
+  border: 2px solid var(--eyebrow-ink);
   transform: translateY(-250%);
   transition: transform .18s cubic-bezier(.22, 1, .36, 1);
 }
@@ -248,7 +248,7 @@ a:not([class]):hover,
 
 .sheet-head {
   display: grid;
-  row-gap: 1.5rem;
+  row-gap: var(--gap);
   padding: 1.5rem 0 5rem;
 }
 
@@ -344,12 +344,12 @@ a:not([class]):hover,
   }
 
   body {
-    color: #000;
+    color: var(--eyebrow-ink);
     font-size: 11pt;
   }
 
   a:not([class]),
-  .site-footer__link { color: #000; }
+  .site-footer__link { color: var(--eyebrow-ink); }
 
   .skip-link,
   .masthead { display: none; }
@@ -358,9 +358,9 @@ a:not([class]):hover,
     font-size: 26pt;
     line-height: 1.1;
     letter-spacing: 0;
-    color: #000;
+    color: var(--eyebrow-ink);
   }
 
   .sheet-head__lede { font-size: 12pt; }
-  .site-footer { color: #000; }
+  .site-footer { color: var(--eyebrow-ink); }
 }

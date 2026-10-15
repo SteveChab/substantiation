@@ -74,6 +74,7 @@
     group.append(button('Previous', -1), count, button('Next', 1), status);
     bar.insertBefore(group, bar.querySelector('form'));
     dlg.classList.add('viewer--stepped');
+    Array.prototype.forEach.call(dlg.querySelectorAll('.viewer__nav'), function (nav) { nav.remove(); });
 
     function go(i) {
       var slide = slides[(i + slides.length) % slides.length];
@@ -117,5 +118,30 @@
     show(0);
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll('dialog.viewer'), step);
+  // Opening a viewer adds a history entry so Back closes it instead of leaving the page.
+  function ownsState(dlg) {
+    return history.state && history.state.viewer === dlg.id;
+  }
+
+  function remember(dlg) {
+    new MutationObserver(function () {
+      if (dlg.open && !ownsState(dlg)) history.pushState({ viewer: dlg.id }, '');
+    }).observe(dlg, { attributes: true, attributeFilter: ['open'] });
+
+    // Close button and Escape land here too; pop the entry we pushed.
+    dlg.addEventListener('close', function () {
+      if (ownsState(dlg)) history.back();
+    });
+  }
+
+  window.addEventListener('popstate', function () {
+    Array.prototype.forEach.call(document.querySelectorAll('dialog.viewer[open]'), function (dlg) {
+      dlg.close();
+    });
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('dialog.viewer'), function (dlg) {
+    remember(dlg);
+    step(dlg);
+  });
 })();

@@ -47,7 +47,7 @@
   <main class="shell" id="main" tabindex="-1">
 
     <header class="sheet-head">
-      <h1 class="sheet-head__title">Design</h1>
+      <h1 class="sheet-head__title">Design here.</h1>
       <p class="sheet-head__lede">Every color, face, and component on this site.</p>
       <p class="sheet-head__body">This is the reference for how chabassol.com is built and why. A Swiss grid, two Roboto families, one salmon gradient, and space doing the work that rules and borders usually do. Every demo below runs on the site's own stylesheets, so this page stays true when the site changes.</p>
     </header>
@@ -112,9 +112,9 @@
             <div class="plate">
               <ul class="swatches">
                 <li>
-                  <span class="swatch__chip" style="background:#111"></span>
+                  <span class="swatch__chip" style="background:#000"></span>
                   <p class="swatch__name">Ink</p>
-                  <p class="swatch__meta">#111111<br>Text, eyebrows, focus ring</p>
+                  <p class="swatch__meta">--eyebrow-ink #000000<br>Text, eyebrows, focus ring</p>
                 </li>
                 <li>
                   <span class="swatch__chip" style="background:#1a1a1a"></span>
@@ -169,12 +169,12 @@
                   <tr><th scope="col">Pairing</th><th scope="col">Ratio</th><th scope="col">Where</th></tr>
                 </thead>
                 <tbody>
-                  <tr><th scope="row">Ink on white</th><td>18.88 : 1</td><td>Viewer, print</td></tr>
+                  <tr><th scope="row">Ink on white</th><td>21.00 : 1</td><td>Viewer, print</td></tr>
                   <tr><th scope="row">White on tape</th><td>17.40 : 1</td><td>Buttons, tags, links</td></tr>
-                  <tr><th scope="row">Ink on pale</th><td>15.65 : 1</td><td>Gradient start</td></tr>
-                  <tr><th scope="row">Ink on selection</th><td>12.74 : 1</td><td>Selected text</td></tr>
-                  <tr><th scope="row">Ink on salmon</th><td>7.55 : 1</td><td>Gradient end, passes AAA</td></tr>
-                  <tr><th scope="row">Ink on coral</th><td>6.67 : 1</td><td>Gradient middle, passes AA, and AAA for large text</td></tr>
+                  <tr><th scope="row">Ink on pale</th><td>17.40 : 1</td><td>Gradient start</td></tr>
+                  <tr><th scope="row">Ink on selection</th><td>14.17 : 1</td><td>Selected text</td></tr>
+                  <tr><th scope="row">Ink on salmon</th><td>8.40 : 1</td><td>Gradient end, passes AAA</td></tr>
+                  <tr><th scope="row">Ink on coral</th><td>7.42 : 1</td><td>Gradient middle, passes AAA</td></tr>
                 </tbody>
               </table>
             </div>
@@ -483,7 +483,7 @@
               <dt>Screen readers</dt>
               <dd>Decorative icons and grid tiles are hidden. Controls carry full names such as "Open image 1 of 6". Text that only sighted users need is marked sr-only.</dd>
               <dt>Contrast</dt>
-              <dd>Black text on the gradient never drops below 6.67 to 1. Taped controls run 17.4 to 1.</dd>
+              <dd>Black text on the gradient never drops below 7.42 to 1. Taped controls run 17.4 to 1.</dd>
               <dt>Motion</dt>
               <dd>The scroll drift is off when prefers-reduced-motion is set, Top fades instead of sliding, and transitions shrink to nothing.</dd>
               <dt>Forced colors</dt>
@@ -551,7 +551,7 @@
                   <tr><th scope="row">css/animations.css</th><td>Scroll-driven motion, behind motion and support checks</td></tr>
                   <tr><th scope="row">css/design.css</th><td>Layout for this page only</td></tr>
                   <tr><th scope="row">js/jump.js</th><td>Focus after in-page jumps</td></tr>
-                  <tr><th scope="row">js/viewer.js</th><td>Image viewer carousel</td></tr>
+                  <tr><th scope="row">js/viewer.js</th><td>Image viewer: one Previous and Next pair for the whole carousel, and a history entry so Back closes the viewer</td></tr>
                 </tbody>
               </table>
             </div>

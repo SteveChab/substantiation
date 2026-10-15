@@ -147,9 +147,9 @@
   cursor: pointer;
 }
 
-.gallery__thumb:hover .gallery__tile { outline: 2px solid #111; outline-offset: 2px; }
+.gallery__thumb:hover .gallery__tile { outline: 2px solid var(--eyebrow-ink); outline-offset: 2px; }
 .gallery__thumb:focus-visible { position: relative; z-index: 1; outline: none; }
-.gallery__thumb:focus-visible .gallery__tile { outline: 3px solid #111; outline-offset: 3px; }
+.gallery__thumb:focus-visible .gallery__tile { outline: 3px solid var(--eyebrow-ink); outline-offset: 3px; }
 
 .gallery__tile {
   position: relative;
@@ -172,7 +172,7 @@
 .gallery__thumbs li:nth-child(3n + 2) .gallery__tile img { transform-origin: 70% 58%; }
 .gallery__thumbs li:nth-child(3n) .gallery__tile img { transform-origin: 46% 82%; }
 
-.gallery__thumb--video .gallery__tile { background: #111; }
+.gallery__thumb--video .gallery__tile { background: var(--eyebrow-ink); }
 
 .gallery__thumb--video .gallery__tile::after {
   content: "";
@@ -181,7 +181,7 @@
   width: 28%;
   aspect-ratio: 1;
   transform: translate(-35%, -50%);
-  background: #fff;
+  background: var(--tape-ink);
   clip-path: polygon(0 0, 100% 50%, 0 100%);
 }
 
@@ -197,7 +197,7 @@
   border: 0;
   overflow: hidden;
   background: #fff;
-  color: #111;
+  color: var(--eyebrow-ink);
 }
 
 .viewer::backdrop { background: #fff; }
@@ -232,7 +232,7 @@ body:has(.viewer[open]) { overflow: hidden; }
 }
 
 .viewer__close:focus-visible,
-.viewer__step:focus-visible { outline: 3px solid #111; outline-offset: 3px; }
+.viewer__step:focus-visible { outline: 3px solid var(--eyebrow-ink); outline-offset: 3px; }
 
 .viewer__steps {
   display: flex;
@@ -245,8 +245,6 @@ body:has(.viewer[open]) { overflow: hidden; }
   cursor: pointer;
 }
 
-.viewer--stepped .viewer__nav { display: none; }
-
 .viewer__track {
   display: flex;
   min-height: 0;
@@ -256,7 +254,7 @@ body:has(.viewer[open]) { overflow: hidden; }
   scroll-snap-type: x mandatory;
 }
 
-.viewer__track:focus-visible { outline: 3px solid #111; outline-offset: -3px; }
+.viewer__track:focus-visible { outline: 3px solid var(--eyebrow-ink); outline-offset: -3px; }
 
 .viewer__slide {
   display: grid;
@@ -315,7 +313,7 @@ body:has(.viewer[open]) { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: var(--gap);
 }
 
 .viewer__count {
@@ -439,5 +437,5 @@ body:has(.viewer[open]) { overflow: hidden; }
   }
 
   .case__meta::before { display: none; }
-  .case__title { color: #000; }
+  .case__title { color: var(--eyebrow-ink); }
 }

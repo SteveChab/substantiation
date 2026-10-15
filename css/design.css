@@ -1,4 +1,7 @@
-.spec { padding: 0 0 7rem; }
+.spec {
+  padding: 4rem 0 7rem;
+  border-top: 2px solid var(--eyebrow-ink);
+}
 
 .spec__label {
   justify-self: start;
@@ -69,7 +72,7 @@
 .swatches {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
-  gap: 2rem 1.5rem;
+  gap: 2rem var(--gap);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -160,7 +163,7 @@
 
 .cell--tint {
   background: var(--tint-pale);
-  color: #111;
+  color: var(--eyebrow-ink);
 }
 
 .cell--tall { min-height: 6.5rem; }
@@ -186,7 +189,7 @@
   display: block;
   height: 1rem;
   max-width: 100%;
-  background: #111;
+  background: var(--eyebrow-ink);
 }
 
 .space__name { font-variant-numeric: tabular-nums; }
@@ -209,13 +212,13 @@
 }
 
 .is-hover {
-  background: #fff !important;
-  color: #111 !important;
-  box-shadow: inset 0 0 0 2px #111;
+  background: var(--tape-ink) !important;
+  color: var(--eyebrow-ink) !important;
+  box-shadow: inset 0 0 0 2px var(--eyebrow-ink);
 }
 
 .is-focus {
-  outline: 3px solid #111;
+  outline: 3px solid var(--eyebrow-ink);
   outline-offset: 3px;
 }
 
@@ -223,8 +226,8 @@
 a.is-hover,
 a.is-focus {
   padding: .05em .35em .1em;
-  background: #111;
-  color: #fff;
+  background: var(--eyebrow-ink);
+  color: var(--tape-ink);
   text-decoration: none;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -258,7 +261,7 @@ a.is-focus {
 .glyphs {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-  gap: 2rem 1.5rem;
+  gap: 2rem var(--gap);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -323,7 +326,7 @@ a.is-focus {
   overflow-x: auto;
 }
 
-.table-wrap:focus-visible { outline: 3px solid #111; outline-offset: 3px; }
+.table-wrap:focus-visible { outline: 3px solid var(--eyebrow-ink); outline-offset: 3px; }
 
 .favicon {
   display: block;

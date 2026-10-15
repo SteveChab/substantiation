@@ -93,7 +93,7 @@
   line-height: 1.7;
 }
 
-.role__list li::marker { color: #111; }
+.role__list li::marker { color: var(--eyebrow-ink); }
 
 .degrees {
   display: grid;
@@ -201,7 +201,7 @@
 
   .job__org {
     font-size: 13pt;
-    color: #000;
+    color: var(--eyebrow-ink);
   }
 
   .role__title { font-size: 10pt; }
