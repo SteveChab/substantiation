@@ -239,6 +239,8 @@ a.is-focus {
   height: auto;
 }
 
+.demo .nav .nav__link:first-child { margin-right: 0; }
+
 .demo .to-top {
   display: inline-block;
   animation: none;
@@ -407,4 +409,10 @@ a.is-focus {
 
   .spec__label { margin: 0 0 .5rem; }
   .plate { background: none !important; }
+}
+
+.demo-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--gap);
 }

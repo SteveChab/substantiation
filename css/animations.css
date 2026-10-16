@@ -17,6 +17,7 @@
 
       .spec,
       .case:nth-of-type(even),
+      .band:nth-of-type(even),
       .record__section:is(:nth-of-type(1), :nth-of-type(even)),
       .job:first-of-type {
         animation: drift-slow linear both;

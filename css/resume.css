@@ -17,7 +17,7 @@
 
 .record__body > p {
   max-width: 65ch;
-  margin: 0 0 1.1rem;
+  margin: 0 0 var(--para-gap);
   font-size: 1.06rem;
   line-height: 1.78;
 }

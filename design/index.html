@@ -24,6 +24,7 @@
 
   <link rel="stylesheet" href="../css/site.css">
   <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/portfolio.css">
   <link rel="stylesheet" href="../css/resume.css">
   <link rel="stylesheet" href="../css/animations.css">
   <link rel="stylesheet" href="../css/design.css">
@@ -35,6 +36,7 @@
   <header class="shell masthead">
     <nav class="nav" aria-label="Main">
       <a class="nav__link" href="../">chabassol.com</a>
+      <a class="nav__link" href="../portfolio/">Portfolio</a>
       <a class="nav__link" href="../resume/">Resume</a>
       <a class="nav__link" href="./" aria-current="page">Design</a>
     </nav>
@@ -188,13 +190,18 @@
           <p class="spec__intro">Roboto Slab at weight 900 does the shouting, tightly leaded and slightly tracked in. Roboto at light weight carries the big ledes, and at regular weight carries the reading. Both fonts are self-hosted variable files, weights 100 to 900.</p>
 
           <div class="specimen">
-            <p class="specimen__meta"><strong>Display.</strong> Roboto Slab 900, clamp(3rem, .5rem + 12vw, 9rem), line height .9, tracking −.015em. Set vertical on wide screens.</p>
+            <p class="specimen__meta"><strong>Display.</strong> Roboto Slab 900, clamp(3rem, .5rem + 12vw, 9rem), line height .9, tracking −.015em. Set vertical on wide screens, with text-box: trim-both cap alphabetic, so the cap height rather than the line box sits on the left grid line. Round letters like the S overshoot it by a hair.</p>
             <p class="spec-display">Steve here.</p>
           </div>
 
           <div class="specimen">
-            <p class="specimen__meta"><strong>Case title.</strong> Roboto Slab 900, clamp(2.6rem, 1rem + 4.6vw, 6.5rem), line height .88.</p>
+            <p class="specimen__meta"><strong>Section title.</strong> Roboto Slab 900, clamp(2.6rem, 1rem + 4.6vw, 6.5rem) (--display), line height .88. Case titles and homepage section titles.</p>
             <p class="case__title" style="margin:0">The XPS Relaunch</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Subhead.</strong> Roboto Slab 900, clamp(1.75rem, 1rem + 1.5vw, 2.6rem) (--sub), line height .95. Small case titles and homepage subheads. The Push and Safe pair on the homepage sets the subhead at the section title size.</p>
+            <p class="band__sub" style="margin:0">Color and sound</p>
           </div>
 
           <div class="specimen">
@@ -208,12 +215,17 @@
           </div>
 
           <div class="specimen">
-            <p class="specimen__meta"><strong>Lede.</strong> Roboto 300, clamp(1.6rem, 1rem + 2.4vw, 3.5rem), line height 1.15.</p>
+            <p class="specimen__meta"><strong>Lede.</strong> Roboto 300, clamp(1.6rem, 1rem + 2.4vw, 3.5rem) (--lede), line height 1.15.</p>
             <p class="spec-lede">Design engineer.<br>Accessible UI.<br>AI-augmented development.</p>
           </div>
 
           <div class="specimen">
-            <p class="specimen__meta"><strong>Case body.</strong> Roboto 400, 1.1875rem, line height 1.7, measure 38rem.</p>
+            <p class="specimen__meta"><strong>Lede highlight.</strong> A <code>&lt;strong&gt;</code> inside a lede turns the light sans into Roboto Slab 900 at the same size, tracked in by −.015em. Use it for one or two words a lede is built around.</p>
+            <p class="lede band__lede" style="margin:0">Performant and accessible is the <strong>floor</strong>. Above it, I want the work to be beautiful enough to <strong>delight</strong> yet practical enough to feel <strong>intuitive</strong>.</p>
+          </div>
+
+          <div class="specimen">
+            <p class="specimen__meta"><strong>Case body.</strong> Roboto 400, 1.1875rem (--body), line height 1.7, measure 38rem. Paragraphs are separated by 1.1rem (--para-gap), none after the last. Also the homepage band prose and card lines.</p>
             <p class="spec-body-wide">An outside agency designed the campaign. My job was to make it real on Dell's site. The pages shipped on time, and XPS sold out in two countries.</p>
           </div>
 
@@ -254,6 +266,7 @@
             <div class="grid-demo" aria-hidden="true">
               <span class="cell cell--tint">1</span><span class="cell cell--tint">2</span><span class="cell cell--tint">3</span><span class="cell cell--tint">4</span><span class="cell cell--tint">5</span><span class="cell cell--tint">6</span><span class="cell cell--tint">7</span><span class="cell cell--tint">8</span><span class="cell cell--tint">9</span><span class="cell cell--tint">10</span><span class="cell cell--tint">11</span><span class="cell cell--tint">12</span>
             </div>
+            <p class="demo__note">Text wrapping: running text uses text-wrap: pretty so a paragraph never ends on a single stranded word. Headings and ledes use text-wrap: balance so short display lines break evenly.</p>
             <p class="demo__note">Gutter 1.5rem (--gap) on the page head and the case list, 2rem inside case and record sections. Page padding 2.5rem, or 1.25rem under 768px (--shell-pad).</p>
           </div>
 
@@ -297,7 +310,7 @@
               <li class="space"><span class="space__name">7rem</span><span class="space__bar" style="width:7rem"></span></li>
               <li class="space"><span class="space__name">8rem</span><span class="space__bar" style="width:8rem"></span></li>
             </ul>
-            <p class="demo__note">Small steps (.25 to 1.5rem) sit inside components. 2 to 2.5rem separates items. 5 to 8rem separates sections: 7rem between record sections, 8rem between case studies.</p>
+            <p class="demo__note">Small steps (.25 to 1.5rem) sit inside components. Paragraph spacing is its own token, 1.1rem (--para-gap), shared by case, resume and homepage prose. 2 to 2.5rem separates items. 5 to 8rem separates sections: 7rem between record sections, 8rem between case studies.</p>
           </div>
         </div>
       </section>
@@ -332,14 +345,12 @@
 
           <div class="demo">
             <h3 class="demo__title">Navigation</h3>
-            <div style="padding-left:.6em">
-              <nav class="nav" aria-label="Navigation states">
-                <span class="nav__link">Default</span>
-                <span class="nav__link is-hover">Hover</span>
-                <span class="nav__link" aria-current="page">Current</span>
-              </nav>
-            </div>
-            <p class="demo__note">Plain text lines up with the page edge. The padding only appears on hover and on the current page. The real nav is fixed at the top left, so it stays with you as you scroll, and it floats over whatever passes beneath it.</p>
+            <nav class="nav" aria-label="Navigation states">
+              <span class="nav__link">Default</span>
+              <span class="nav__link is-hover">Hover</span>
+              <span class="nav__link" aria-current="page">Current</span>
+            </nav>
+            <p class="demo__note">Every item is tape. The current page swaps the dark ground for the pale tint (--tint-pale) with black text. The real nav is fixed at the top left, so it stays with you as you scroll, and it floats over whatever passes beneath it. Where the row would run under Top or the Hebrew mark, the home link keeps the first line and the other items drop to a second line beneath it: under 410px on this page, where four items sit in the row, and under 340px on the three-item pages.</p>
           </div>
 
           <div class="demo">
@@ -376,6 +387,44 @@
           </div>
 
           <div class="demo">
+            <h3 class="demo__title">Call to action</h3>
+            <ul class="states">
+              <li><span class="states__name label">Default</span><span class="cta">See my portfolio</span></li>
+              <li><span class="states__name label">Hover</span><span class="cta is-hover">See my portfolio</span></li>
+              <li><span class="states__name label">Focus</span><span class="cta is-focus">See my portfolio</span></li>
+            </ul>
+            <p class="demo__note">The one large tape link. It takes the body size instead of the eyebrow size, with the same weight, tracking, uppercase, and hover. It sits centered under a card grid and leads to the full list. One per page.</p>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Card grid</h3>
+            <div class="demo-cards">
+              <article class="card">
+                <img class="card__img" src="../images/xps-hero.jpg" alt="" width="600" height="450" loading="lazy" decoding="async">
+                <h4 class="card__title"><a class="jump__link" href="../portfolio/#xps">The XPS Relaunch</a></h4>
+                <p class="card__line">Led implementation for an embargoed global launch covered by Reuters and Ars Technica.</p>
+              </article>
+              <article class="card">
+                <img class="card__img" src="../images/cmu-2019-hero.jpg" alt="" width="600" height="450" loading="lazy" decoding="async">
+                <h4 class="card__title"><a class="jump__link" href="../portfolio/#cmu">Fifteen Years of cmu.edu</a></h4>
+                <p class="card__line">Fifteen years of homepages for my alma mater, with the front end in my hands.</p>
+              </article>
+              <article class="card">
+                <img class="card__img" src="../images/cmu-design-system.jpg" alt="" width="600" height="450" loading="lazy" decoding="async">
+                <h4 class="card__title"><a class="jump__link" href="../portfolio/#design-system">University Design System</a></h4>
+                <p class="card__line">The templates, authoring tools, and brand standards behind hundreds of university sites.</p>
+              </article>
+            </div>
+            <p class="demo__note">Three cards across from 700px up, one column below. Each is a 4:3 picture, a tape link for the title, and one line at body size. Nothing else: no company name, no second link. The card title is the only link in the card.</p>
+          </div>
+
+          <div class="demo">
+            <h3 class="demo__title">Equalizer</h3>
+            <div class="eq" aria-hidden="true"><span class="eq__bar" style="--h:0.22;--i:0"></span><span class="eq__bar" style="--h:0.50;--i:1"></span><span class="eq__bar" style="--h:0.58;--i:2"></span><span class="eq__bar" style="--h:0.48;--i:3"></span><span class="eq__bar" style="--h:0.30;--i:4"></span><span class="eq__bar" style="--h:0.70;--i:5"></span><span class="eq__bar" style="--h:0.82;--i:6"></span><span class="eq__bar" style="--h:0.72;--i:7"></span><span class="eq__bar" style="--h:0.40;--i:8"></span><span class="eq__bar" style="--h:0.93;--i:9"></span><span class="eq__bar" style="--h:0.53;--i:10"></span><span class="eq__bar" style="--h:0.25;--i:11"></span></div>
+            <p class="demo__note">Black bars, 7rem tall, standing on a baseline. The homepage music section runs 56 of them across the full width, 24 under 768px. Purely decorative, so hidden from assistive tech. Each bar carries its height in --h and its place in --i.</p>
+          </div>
+
+          <div class="demo">
             <h3 class="demo__title">Gallery tiles</h3>
             <ul class="gallery__thumbs">
               <li><div class="gallery__thumb"><span class="gallery__tile"><img src="../images/xps-hero.jpg" alt="" loading="lazy" decoding="async"></span></div></li>
@@ -407,8 +456,8 @@
                   <p class="role__dates">0123456789</p>
                 </div>
                 <ul class="role__list">
-                  <li>Led implementation of the online experience for an embargoed global relaunch.</li>
-                  <li>Learned GSAP while building with it, and shipped on time.</li>
+                  <li>Led implementation of the online experiences behind Dell's embargoed global XPS relaunch.</li>
+                  <li>Research e-commerce experimentation and best practices, devise test ideas, and make UI and UX decisions while a test's design is still taking shape.</li>
                 </ul>
               </div>
             </div>
@@ -417,7 +466,7 @@
               <h3 class="demo__title">Terms</h3>
               <dl class="terms">
                 <dt>Accessibility</dt>
-                <dd>Standards written for a research university and a process written for Dell's experiments.</dd>
+                <dd>A process written for Dell's experiments and standards written for a research university.</dd>
                 <dt>Design systems</dt>
                 <dd>Templates, authoring tools, and brand standards shared by hundreds of sites.</dd>
               </dl>
@@ -429,7 +478,7 @@
       <section class="spec" id="icons" tabindex="-1" aria-labelledby="icons-h">
         <h2 class="label spec__label" id="icons-h">Icons</h2>
         <div class="spec__body">
-          <p class="spec__intro">One glyph per case study, drawn from Material Symbols Outlined. The font is a 3KB subset holding only these twelve, so adding an icon means re-subsetting the file. Icons are decorative and always hidden from screen readers.</p>
+          <p class="spec__intro">One glyph per case study, drawn from Material Symbols Outlined. The homepage section labels borrow six of the same glyphs for their own meanings: service (accessibility), range (design system), passion projects (books), wonder (CMU), direction (XPS), and work (AI review). The font is a 3KB subset holding only these twelve, so adding an icon means re-subsetting the file. Icons are decorative and always hidden from screen readers.</p>
           <ul class="glyphs">
             <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xeb9b;</span><span>The XPS Relaunch<span class="glyph__code">U+EB9B</span></span></li>
             <li class="glyph"><span class="glyph__mark" aria-hidden="true">&#xe66a;</span><span>Fifteen Years of cmu.edu<span class="glyph__code">U+E66A</span></span></li>
@@ -460,6 +509,9 @@
               <tbody>
                 <tr><th scope="row">Page head</th><td>Drifts down 6rem as it leaves</td><td>First 80vh of scroll, wide screens</td></tr>
                 <tr><th scope="row">Case sections</th><td>Alternate slow and fast drift of 5rem</td><td>While in view, wide screens</td></tr>
+                <tr><th scope="row">Homepage sections</th><td>Even sections drift slow, same 5rem</td><td>While in view, wide screens</td></tr>
+                <tr><th scope="row">Resume sections and jobs</th><td>Same alternating drift of 5rem</td><td>While in view, wide screens</td></tr>
+                <tr><th scope="row">Equalizer bars</th><td>Each bar scales between 40% and 100% of its height, staggered by 110ms, 2.6s alternate loop</td><td>Motion allowed only</td></tr>
                 <tr><th scope="row">Top button</th><td>Slides down from above, or fades in when motion is reduced</td><td>101vh to 111vh of scroll</td></tr>
                 <tr><th scope="row">Skip link</th><td>Slides in on focus, .18s</td><td>cubic-bezier(.22, 1, .36, 1)</td></tr>
                 <tr><th scope="row">Image viewer</th><td>Smooth scroll between slides</td><td>Motion allowed only</td></tr>
@@ -506,10 +558,11 @@
                   <tr><th scope="col">Width</th><th scope="col">What changes</th></tr>
                 </thead>
                 <tbody>
-                  <tr><th scope="row">700px and up</th><td>Jump items and principles run two columns, terms split into term and definition</td></tr>
-                  <tr><th scope="row">Under 768px</th><td>Page padding drops to 1.25rem</td></tr>
+                  <tr><th scope="row">700px and up</th><td>Jump items and principles run two columns, terms split into term and definition, homepage cards sit three across</td></tr>
+                  <tr><th scope="row">Under 410px</th><td>Four-item nav wraps: chabassol.com on the first line, the rest beneath it. Three-item navs wrap under 340px</td></tr>
+                  <tr><th scope="row">Under 768px</th><td>Page padding drops to 1.25rem, the equalizer keeps 24 bars</td></tr>
                   <tr><th scope="row">Under 1140px</th><td>One centered column, 40rem at most</td></tr>
-                  <tr><th scope="row">1140px and up</th><td>Twelve-column grid, vertical labels, scroll-driven drift</td></tr>
+                  <tr><th scope="row">1140px and up</th><td>Twelve-column grid, vertical labels, scroll-driven drift. Cases without a figure sit three across, two across for Moving 250 Sites and Patent Pending</td></tr>
                   <tr><th scope="row">1560px</th><td>Shell stops growing and centers</td></tr>
                 </tbody>
               </table>
@@ -533,7 +586,7 @@
 
           <div class="demo demo-share">
             <h3 class="demo__title">Share card</h3>
-            <img src="../share-card.png" width="1200" height="630" loading="lazy" decoding="async" alt="The name Steve Chabassol in large slab letters under a black SC monogram on a salmon gradient, with the lines: Design engineer. Accessible UI. AI-augmented development.">
+            <img src="../share-card.png" width="1200" height="630" loading="lazy" decoding="async" alt="The words Steve here set sideways in heavy slab letters, beside the lines Made to serve and Built to delight, above three black tags reading Design engineer, Accessible UI, and AI-augmented development, on a salmon gradient.">
             <p class="demo__note">1200 by 630, used for link previews.</p>
           </div>
 
@@ -545,8 +598,9 @@
                   <tr><th scope="col">File</th><th scope="col">Holds</th></tr>
                 </thead>
                 <tbody>
-                  <tr><th scope="row">css/site.css</th><td>Fonts, tokens, base type, links and tape, header, page head, footer</td></tr>
-                  <tr><th scope="row">css/home.css</th><td>Jump list, case studies, gallery tiles, image viewer</td></tr>
+                  <tr><th scope="row">css/site.css</th><td>Fonts, tokens, base type, links and tape, header, page head, ledes, call to action, case meta and titles, footer</td></tr>
+                  <tr><th scope="row">css/home.css</th><td>Homepage sections, subheads, equalizer, cards</td></tr>
+                  <tr><th scope="row">css/portfolio.css</th><td>Jump list, case studies, gallery tiles, image viewer</td></tr>
                   <tr><th scope="row">css/resume.css</th><td>Record sections, jobs, roles, terms, degrees</td></tr>
                   <tr><th scope="row">css/animations.css</th><td>Scroll-driven motion, behind motion and support checks</td></tr>
                   <tr><th scope="row">css/design.css</th><td>Layout for this page only</td></tr>
