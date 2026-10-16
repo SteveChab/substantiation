@@ -179,43 +179,264 @@
 }
 
 @media print {
+  @page {
+    size: letter;
+    margin: .45in .55in .5in;
+
+    @bottom-right {
+      content: counter(page) " of " counter(pages);
+      font: 700 6.5pt / 1 'Roboto', sans-serif;
+      letter-spacing: .065em;
+    }
+  }
+
+  /* Three columns on every row: section label, org and role, then the text. Gaps step off a 12.5pt line. */
+  :root {
+    --p-label: .7in;
+    --p-meta: 1.4in;
+    --p-gutter: .18in;
+    --p-line: 12.5pt;
+    --p-half: 6.25pt;
+    --p-ink: #000;
+    --p-quiet: #555;
+  }
+
+  body {
+    position: relative;
+    color: var(--p-ink);
+    font-size: 9.25pt;
+    line-height: var(--p-line);
+  }
+
+  .shell {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sheet-head,
+  .record {
+    max-width: none;
+    margin: 0;
+  }
+
+  .site-footer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0 var(--p-half);
+    border-bottom: 1pt solid var(--p-ink);
+  }
+
+  .site-footer__nav { display: none; }
+
+  .site-footer::before {
+    content: "chabassol.com";
+    font: var(--eyebrow-weight) 6.5pt / 1 var(--font-sans);
+    letter-spacing: var(--eyebrow-track);
+    text-transform: uppercase;
+  }
+
+  .site-footer__place {
+    font-size: 6.5pt;
+    line-height: 1;
+  }
+
+  .sheet-head {
+    display: grid;
+    grid-template-columns: calc(var(--p-label) + var(--p-gutter) + var(--p-meta)) minmax(0, 1fr);
+    column-gap: var(--p-gutter);
+    row-gap: var(--p-half);
+    align-items: end;
+    padding: calc(var(--p-line) * 4) 0 calc(var(--p-line) * 3);
+  }
+
+  .sheet-head__title {
+    grid-row: 1 / span 2;
+    align-self: end;
+    font-size: 34pt;
+    line-height: .86;
+    letter-spacing: var(--track-display);
+    color: var(--p-ink);
+  }
+
+  .sheet-head__lede {
+    max-width: none;
+    font-size: 13.5pt;
+    font-weight: 300;
+    line-height: 1.18;
+    color: var(--p-ink);
+  }
+
+  .roles {
+    gap: 5pt var(--p-line);
+    font-size: 6.5pt;
+    line-height: 1;
+  }
+
   .record__section {
-    display: block;
-    padding: .9rem 0;
-    border-top: 1px solid #999;
+    position: relative;
+    margin: 0 0 var(--p-line);
+    padding: var(--p-half) 0 0 calc(var(--p-label) + var(--p-gutter));
+    border-top: 1pt solid var(--p-ink);
+    break-inside: auto;
+  }
+
+  .record__section--web-only { display: none; }
+
+  .record__label {
+    position: absolute;
+    top: var(--p-half);
+    left: 0;
+    margin: 0;
+    font-size: 6.5pt;
+    line-height: var(--p-line);
+  }
+
+  .record__body { padding: 0; }
+
+  .terms {
+    grid-template-columns: var(--p-meta) minmax(0, 1fr);
+    gap: var(--p-half) var(--p-gutter);
+    margin: 0;
+  }
+
+  .terms dt {
+    font-size: 9pt;
+    line-height: var(--p-line);
+    text-align: start;
+  }
+
+  .terms dd,
+  .job__blurb,
+  .role__list li,
+  .degrees__what,
+  .degrees__where {
+    max-width: none;
+    font-size: 9.25pt;
+    line-height: var(--p-line);
+  }
+
+  .job {
+    display: grid;
+    grid-template-columns: var(--p-meta) minmax(0, 1fr);
+    column-gap: var(--p-gutter);
+    align-items: start;
+  }
+
+  /* One employer a page. The second starts page two under a full-width rule, pulled back across the label column. */
+  .job + .job {
+    position: relative;
+    margin: 0 0 0 calc(-1 * (var(--p-label) + var(--p-gutter)));
+    padding: var(--p-half) 0 0 calc(var(--p-label) + var(--p-gutter));
+    border-top: 1pt solid var(--p-ink);
+    break-before: page;
+  }
+
+  .job + .job::before {
+    content: "Experience";
+    position: absolute;
+    top: var(--p-half);
+    left: 0;
+    font: var(--eyebrow-weight) 6.5pt / var(--p-line) var(--font-sans);
+    letter-spacing: var(--eyebrow-track);
+    text-transform: uppercase;
+  }
+
+  .job__org {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+    font-size: 13pt;
+    line-height: 1;
+    color: var(--p-ink);
+  }
+
+  .job__place {
+    grid-column: 1;
+    grid-row: 2;
+    margin: var(--p-half) 0 0;
+    font-size: 6.5pt;
+    line-height: 1;
+    color: var(--p-quiet);
+  }
+
+  .job__blurb {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin: 0;
+    font-size: 10pt;
+    font-weight: 300;
+    line-height: var(--p-line);
+  }
+
+  .role {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: subgrid;
+    margin-top: calc(var(--p-line) * .75);
     break-inside: avoid;
   }
 
-  .record__label {
-    margin: 0 0 .5rem;
-    font-size: 9pt;
+  .role + .role { margin-top: var(--p-half); }
+
+  .role__head {
+    grid-column: 1;
+    flex-direction: column;
+    align-items: start;
+    gap: 3pt;
+    margin: 0;
+    padding-top: 2.5pt;
   }
 
-  .job + .job {
-    margin-top: 1rem;
-    padding-top: .8rem;
+  .role__title {
+    font-size: 6.5pt;
+    line-height: 1.25;
   }
 
-  .job,
-  .role { break-inside: avoid; }
-
-  .job__org {
-    font-size: 13pt;
-    color: var(--eyebrow-ink);
+  .role__dates {
+    font-size: 8.5pt;
+    line-height: 1;
+    color: var(--p-quiet);
   }
 
-  .role__title { font-size: 10pt; }
-
-  .record__body > p,
-  .job__blurb,
-  .role__list li,
-  .terms dd { font-size: 10.5pt; line-height: 1.45; }
-
-  .record__body a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 9pt;
-    word-break: break-all;
+  .role__list {
+    grid-column: 2;
+    gap: 2pt;
+    padding-left: 9pt;
+    list-style: square;
   }
 
-  .record__body a[href^="mailto:"]::after { content: ""; }
+  .role__list li { padding-left: 1pt; }
+
+  .role__list li::marker {
+    color: var(--p-ink);
+    font-size: 7pt;
+  }
+
+  .degrees {
+    gap: var(--p-half);
+    break-inside: avoid;
+  }
+
+  .degrees li {
+    display: grid;
+    grid-template-columns: var(--p-meta) minmax(0, 1fr);
+    column-gap: var(--p-gutter);
+  }
+
+  .degrees__where {
+    grid-column: 1;
+    grid-row: 1;
+    font: 700 9pt / var(--p-line) var(--font-slab);
+  }
+
+  .degrees__what {
+    grid-column: 2;
+    grid-row: 1;
+    font-family: var(--font-sans);
+    font-weight: 400;
+  }
 }
