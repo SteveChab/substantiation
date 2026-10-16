@@ -346,6 +346,12 @@ a.is-focus {
   .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
+/* The drifting sections slide over the contents list; z-index needs a positioned box. */
+.toc-wrap {
+  position: relative;
+  z-index: 1;
+}
+
 @media (max-width: 1139px) {
   .specs,
   .toc-wrap {

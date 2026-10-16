@@ -63,6 +63,7 @@
 
 .band__cta { margin: 0; text-align: center; }
 
+#about .case__meta::before { content: "\e029"; content: "\e029" / ""; }
 #drives .case__meta::before { content: "\e92c"; content: "\e92c" / ""; }
 #range .case__meta::before { content: "\e1bd"; content: "\e1bd" / ""; }
 #passion .case__meta::before { content: "\ea19"; content: "\ea19" / ""; }

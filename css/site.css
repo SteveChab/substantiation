@@ -258,8 +258,8 @@ a:not([class]):hover,
   text-decoration: none;
 }
 
-/* Where the row would run under Top, the home link keeps the first line and the rest drop beneath it. Three items run out of room under 340px, four under 410px. */
-@media (max-width: 339px) {
+/* Where the row would run under Top, the home link keeps the first line and the rest drop beneath it. */
+@media (max-width: 499px) {
   .nav {
     top: calc(1.5rem + (1.75rem - 1.35 * var(--eyebrow-size)) / 2);
     flex-wrap: wrap;
@@ -268,17 +268,6 @@ a:not([class]):hover,
   }
 
   .nav .nav__link:first-child { margin-right: 100vw; }
-}
-
-@media (max-width: 409px) {
-  .nav:has(.nav__link:nth-child(4)) {
-    top: calc(1.5rem + (1.75rem - 1.35 * var(--eyebrow-size)) / 2);
-    flex-wrap: wrap;
-    gap: .5rem;
-    height: auto;
-  }
-
-  .nav:has(.nav__link:nth-child(4)) .nav__link:first-child { margin-right: 100vw; }
 }
 
 .sheet-head {
