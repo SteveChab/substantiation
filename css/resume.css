@@ -1,3 +1,46 @@
+@font-face {
+  font-family: 'Roboto Print';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/roboto-print-300.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Print';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/roboto-print-400.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Print';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/roboto-print-700.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Slab Print';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(../fonts/roboto-slab-print-700.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto Slab Print';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url(../fonts/roboto-slab-print-900.woff2) format('woff2');
+}
+
+.contact,
+.job__continued { display: none; }
+
 .roles {
   display: flex;
   flex-wrap: wrap;
@@ -30,11 +73,12 @@
   margin: 0;
 }
 
-.terms dt {
+.terms__term {
+  margin: 0;
   font: 700 1rem / 1.35 var(--font-slab);
 }
 
-.terms dd {
+.terms__desc {
   max-width: 65ch;
   margin: .1rem 0 0;
   font-size: 1.02rem;
@@ -124,12 +168,12 @@
     margin-bottom: 2em;
   }
 
-  .terms dt {
+  .terms__term {
     grid-column: 1;
     text-align: right;
   }
 
-  .terms dd {
+  .terms__desc {
     grid-column: 2;
     margin-top: 0;
   }
@@ -185,13 +229,15 @@
 
     @bottom-right {
       content: counter(page) " of " counter(pages);
-      font: 700 6.5pt / 1 'Roboto', sans-serif;
+      font: 700 6.5pt / 1 'Roboto Print', 'Roboto', sans-serif;
       letter-spacing: .065em;
     }
   }
 
   /* Three columns on every row: section label, org and role, then the text. Gaps step off a 12.5pt line. */
   :root {
+    --font-sans: 'Roboto Print', 'Roboto', system-ui, sans-serif;
+    --font-slab: 'Roboto Slab Print', 'Roboto Slab', Georgia, serif;
     --p-label: .7in;
     --p-meta: 1.4in;
     --p-gutter: .18in;
@@ -219,30 +265,10 @@
     margin: 0;
   }
 
-  .site-footer {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 0 var(--p-half);
-    border-bottom: 1pt solid var(--p-ink);
-  }
+  /* Chromium drops the space at a line break from the PDF text, so wrapped words read joined. Kept spaces survive. */
+  h1, h2, h3, h4, p, li { white-space-collapse: preserve; }
 
-  .site-footer__nav { display: none; }
-
-  .site-footer::before {
-    content: "chabassol.com";
-    font: var(--eyebrow-weight) 6.5pt / 1 var(--font-sans);
-    letter-spacing: var(--eyebrow-track);
-    text-transform: uppercase;
-  }
-
-  .site-footer__place {
-    font-size: 6.5pt;
-    line-height: 1;
-  }
+  .site-footer { display: none; }
 
   .sheet-head {
     display: grid;
@@ -250,11 +276,41 @@
     column-gap: var(--p-gutter);
     row-gap: var(--p-half);
     align-items: end;
-    padding: calc(var(--p-line) * 4) 0 calc(var(--p-line) * 3);
+    padding: 0 0 calc(var(--p-line) * 3);
+  }
+
+  .contact {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    grid-template-columns: subgrid;
+    margin: 0 0 calc(var(--p-line) * 2.5);
+    padding: 0 0 var(--p-half);
+    border-bottom: 1pt solid var(--p-ink);
+    font: var(--eyebrow-weight) 6.5pt / 1 var(--font-sans);
+    letter-spacing: var(--eyebrow-track);
+    text-transform: uppercase;
+    list-style: none;
+  }
+
+  .contact__mail {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .contact li:last-child {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .contact__link {
+    color: var(--p-ink);
+    text-decoration: none;
   }
 
   .sheet-head__title {
-    grid-row: 1 / span 2;
+    grid-row: 2 / span 2;
     align-self: end;
     font-size: 34pt;
     line-height: .86;
@@ -263,6 +319,8 @@
   }
 
   .sheet-head__lede {
+    grid-column: 2;
+    grid-row: 2;
     max-width: none;
     font-size: 13.5pt;
     font-weight: 300;
@@ -271,6 +329,8 @@
   }
 
   .roles {
+    grid-column: 2;
+    grid-row: 3;
     gap: 5pt var(--p-line);
     font-size: 6.5pt;
     line-height: 1;
@@ -303,13 +363,13 @@
     margin: 0;
   }
 
-  .terms dt {
+  .terms__term {
     font-size: 9pt;
     line-height: var(--p-line);
     text-align: start;
   }
 
-  .terms dd,
+  .terms__desc,
   .job__blurb,
   .role__list li,
   .degrees__what,
@@ -335,14 +395,14 @@
     break-before: page;
   }
 
-  .job + .job::before {
-    content: "Experience";
+  .job + .job .job__continued {
+    display: block;
     position: absolute;
     top: var(--p-half);
     left: 0;
-    font: var(--eyebrow-weight) 6.5pt / var(--p-line) var(--font-sans);
-    letter-spacing: var(--eyebrow-track);
-    text-transform: uppercase;
+    margin: 0;
+    font-size: 6.5pt;
+    line-height: var(--p-line);
   }
 
   .job__org {

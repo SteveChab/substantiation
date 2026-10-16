@@ -55,7 +55,14 @@
   <main class="shell" id="main" tabindex="-1">
 
     <header class="sheet-head">
-      <h1 class="sheet-head__title">Steve<br>Chabassol</h1>
+      <h1 class="sheet-head__title">Steve <br>Chabassol</h1>
+
+      <ul class="contact">
+        <li><a class="contact__link" href="https://chabassol.com/">chabassol.com</a></li>
+        <li class="contact__mail"></li>
+        <li>Pittsburgh, PA, USA</li>
+      </ul>
+
       <p class="sheet-head__lede">Twenty years of design and front-end engineering that empowers large orgs to ship beautiful, consistent, accessible work.</p>
 
       <ul class="roles">
@@ -71,19 +78,19 @@
       <section class="record__section" aria-labelledby="expertise-head">
         <h2 class="label record__label" id="expertise-head">Expertise</h2>
         <div class="record__body">
-          <dl class="terms">
-            <dt>Design and craft</dt>
-            <dd>Typography, layout, interaction and motion, UX and UI, design systems, information architecture, content strategy, branding, logo and identity design, Adobe Creative Suite (Photoshop, Illustrator)</dd>
+          <div class="terms">
+            <h3 class="terms__term">Design and craft</h3>
+            <p class="terms__desc">Typography, layout, interaction and motion, UX and UI, design systems, information architecture, content strategy, branding, logo and identity design, Adobe Creative Suite (Photoshop, Illustrator)</p>
 
-            <dt>Engineering</dt>
-            <dd>HTML, CSS, JavaScript, prototyping in code, SVG and CSS animation, GSAP, A/B experimentation, CMS development and templating, performance tuning</dd>
+            <h3 class="terms__term">Engineering</h3>
+            <p class="terms__desc">HTML, CSS, JavaScript, prototyping in code, SVG and CSS animation, GSAP, A/B experimentation, CMS development and templating, performance tuning</p>
 
-            <dt>Accessibility</dt>
-            <dd>WCAG, NVDA, JAWS, VoiceOver, inclusive design, audit, remediation, training, documentation</dd>
+            <h3 class="terms__term">Accessibility</h3>
+            <p class="terms__desc">WCAG, NVDA, JAWS, VoiceOver, inclusive design, audit, remediation, training, documentation</p>
 
-            <dt>AI-augmented work</dt>
-            <dd>Claude, Devin, Snyk, AI SDLC, spec-driven development (SDD)</dd>
-          </dl>
+            <h3 class="terms__term">AI-augmented work</h3>
+            <p class="terms__desc">Claude, Devin, Snyk, AI SDLC, spec-driven development (SDD)</p>
+          </div>
         </div>
       </section>
 
@@ -116,6 +123,7 @@
           </article>
 
           <article class="job">
+            <p class="label job__continued" aria-hidden="true">Experience</p>
             <h3 class="job__org">Carnegie Mellon University</h3>
             <p class="job__place">Pittsburgh, PA</p>
             <p class="job__blurb">Carnegie Mellon runs a decentralized web ecosystem: hundreds of college, department, and campaign sites. I shaped its web brand and crafted its web design and accessibility standards.</p>
@@ -225,6 +233,7 @@
   </footer>
 
   <script src="../js/jump.js" defer></script>
+  <script src="../js/print.js" defer></script>
 
 </body>
 

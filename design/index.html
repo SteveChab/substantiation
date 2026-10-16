@@ -465,10 +465,10 @@
             <div>
               <h3 class="demo__title">Terms</h3>
               <dl class="terms">
-                <dt>Accessibility</dt>
-                <dd>A process written for Dell's experiments and standards written for a research university.</dd>
-                <dt>Design systems</dt>
-                <dd>Templates, authoring tools, and brand standards shared by hundreds of sites.</dd>
+                <dt class="terms__term">Accessibility</dt>
+                <dd class="terms__desc">A process written for Dell's experiments and standards written for a research university.</dd>
+                <dt class="terms__term">Design systems</dt>
+                <dd class="terms__desc">Templates, authoring tools, and brand standards shared by hundreds of sites.</dd>
               </dl>
             </div>
           </div>
@@ -526,22 +526,22 @@
         <div class="spec__body">
           <div class="demo">
             <dl class="terms">
-              <dt>Keyboard</dt>
-              <dd>Every control is a link or button. A skip link is first in the tab order. Focus is a 3px black outline offset 3px, visible on every ground.</dd>
-              <dt>Focus management</dt>
-              <dd>A small script moves focus to the target after an in-page jump, so keyboard and screen reader users land where the page scrolled to.</dd>
-              <dt>Structure</dt>
-              <dd>One h1 per page, labelled landmarks, sections tied to their headings, and a language attribute on the Hebrew mark.</dd>
-              <dt>Screen readers</dt>
-              <dd>Decorative icons and grid tiles are hidden. Controls carry full names such as "Open image 1 of 6". Text that only sighted users need is marked sr-only.</dd>
-              <dt>Contrast</dt>
-              <dd>Black text on the gradient never drops below 7.42 to 1. Taped controls run 17.4 to 1.</dd>
-              <dt>Motion</dt>
-              <dd>The scroll drift is off when prefers-reduced-motion is set, Top fades instead of sliding, and transitions shrink to nothing.</dd>
-              <dt>Forced colors</dt>
-              <dd>Links regain their underline in Windows high contrast mode.</dd>
-              <dt>Zoom and reflow</dt>
-              <dd>Type is set in rem and clamp, text size adjustment is set to 100%, and nothing scrolls sideways at narrow widths.</dd>
+              <dt class="terms__term">Keyboard</dt>
+              <dd class="terms__desc">Every control is a link or button. A skip link is first in the tab order. Focus is a 3px black outline offset 3px, visible on every ground.</dd>
+              <dt class="terms__term">Focus management</dt>
+              <dd class="terms__desc">A small script moves focus to the target after an in-page jump, so keyboard and screen reader users land where the page scrolled to.</dd>
+              <dt class="terms__term">Structure</dt>
+              <dd class="terms__desc">One h1 per page, labelled landmarks, sections tied to their headings, and a language attribute on the Hebrew mark.</dd>
+              <dt class="terms__term">Screen readers</dt>
+              <dd class="terms__desc">Decorative icons and grid tiles are hidden. Controls carry full names such as "Open image 1 of 6". Text that only sighted users need is marked sr-only.</dd>
+              <dt class="terms__term">Contrast</dt>
+              <dd class="terms__desc">Black text on the gradient never drops below 7.42 to 1. Taped controls run 17.4 to 1.</dd>
+              <dt class="terms__term">Motion</dt>
+              <dd class="terms__desc">The scroll drift is off when prefers-reduced-motion is set, Top fades instead of sliding, and transitions shrink to nothing.</dd>
+              <dt class="terms__term">Forced colors</dt>
+              <dd class="terms__desc">Links regain their underline in Windows high contrast mode.</dd>
+              <dt class="terms__term">Zoom and reflow</dt>
+              <dd class="terms__desc">Type is set in rem and clamp, text size adjustment is set to 100%, and nothing scrolls sideways at narrow widths.</dd>
             </dl>
           </div>
         </div>
@@ -571,7 +571,7 @@
           <div class="demo">
             <h3 class="demo__title">Print</h3>
             <p class="spec__intro" style="margin:0">Printing strips color and motion and hides the header, the jump list, and the image viewer. Page heads drop to 26pt, body text to 10.5 or 11pt, and sections avoid page breaks, set apart by thin gray rules.</p>
-            <p class="spec__intro" style="margin:1rem 0 0">The resume prints as two US Letter pages on a three-column grid, the same frame as the case sheet: section labels in a .7in column, employers, roles, and dates in a 1.4in column, and the text in the rest, with .18in gutters. Ink is black on white, with #555 for places and dates, and a 1pt black rule opens each section. chabassol.com and Pittsburgh, PA, USA sit over a rule at the top of page one. Volunteer prints; Proof and the LinkedIn link stay off paper. The name sets at 34pt in heavy slab beside a 13.5pt light lede; employers set at 13pt slab, summaries at 10pt light, body text at 9.25pt on a 12.5pt line, and labels and role titles at 6.5pt in the eyebrow caps, with square bullets. Gaps step off the 12.5pt line: 2pt between list items, a half line between rows and roles, three quarters above each role list, and a full line between sections. Page two opens on Carnegie Mellon under its own rule, labeled Experience. Each page carries its count, 1 of 2 and 2 of 2, in the bottom right corner. Chrome's Save as PDF keeps the headings, lists, and links tagged.</p>
+            <p class="spec__intro" style="margin:1rem 0 0">The resume prints as two US Letter pages on a three-column grid, the same frame as the case sheet: section labels in a .7in column, employers, roles, and dates in a 1.4in column, and the text in the rest, with .18in gutters. Ink is black on white, with #555 for places and dates, and a 1pt black rule opens each section. A contact strip over a rule tops page one, in the header's own markup after the name: chabassol.com as a link, resume@chabassol.com at the edge of the lede, and Pittsburgh, PA, USA at the right. The address is written in at print time, so the web page never carries it. Volunteer prints; Proof and the LinkedIn link stay off paper. The name sets at 34pt in heavy slab beside a 13.5pt light lede; employers set at 13pt slab, summaries at 10pt light, body text at 9.25pt on a 12.5pt line, and labels and role titles at 6.5pt in the eyebrow caps, with square bullets. Gaps step off the 12.5pt line: 2pt between list items, a half line between rows and roles, three quarters above each role list, and a full line between sections. Page two opens on Carnegie Mellon under its own rule, with Experience repeated in the label column as a cue for the eye, hidden from screen readers so the section is not announced twice. Each page carries its count, 1 of 2 and 2 of 2, in the bottom right corner. Print sets in static cuts of Roboto (300, 400, 700) and Roboto Slab (700, 900), so the PDF embeds TrueType rather than Type 3 outlines, and spaces are kept at line ends so the PDF text never runs two words together. Chrome's Save as PDF tags the headings, lists, and links; the page counts and the repeated Experience label are left untagged.</p>
           </div>
         </div>
       </section>
@@ -614,7 +614,7 @@
 
           <div class="demo">
             <h3 class="demo__title">Fonts</h3>
-            <p class="spec__intro" style="margin:0">Roboto, Roboto Slab, and a Material Symbols subset, all self-hosted as woff2 under fonts/. Text faces load with swap. The icon font loads with block, so a missing glyph never flashes as an empty box.</p>
+            <p class="spec__intro" style="margin:0">Roboto, Roboto Slab, and a Material Symbols subset, all self-hosted as woff2 under fonts/, plus static print cuts of the two text faces that the resume fetches after load. Text faces load with swap. The icon font loads with block, so a missing glyph never flashes as an empty box.</p>
           </div>
         </div>
       </section>
