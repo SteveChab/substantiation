@@ -15,12 +15,12 @@
     }
   }
 
-  // Wait a frame so the scroll settles before focus lands.
   document.addEventListener('click', function (e) {
-    var link = e.target.closest ? e.target.closest('a[href^="#"]') : null;
+    var link = e.target.closest('a[href^="#"]');
     if (!link) return;
     var id = link.getAttribute('href').slice(1);
     if (!id) return;
+    // Wait a frame so the scroll settles before focus lands.
     requestAnimationFrame(function () { land(id); });
   });
 

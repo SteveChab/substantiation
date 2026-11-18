@@ -115,8 +115,6 @@
   line-height: 1.4;
 }
 
-.specimen__sample { margin: 0; }
-
 .spec-display {
   margin: 0;
   font: 900 clamp(3rem, .5rem + 12vw, 9rem) / .9 var(--font-slab);

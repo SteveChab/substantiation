@@ -16,7 +16,7 @@
       }
 
       .spec,
-      .case:nth-of-type(even),
+      .case:nth-of-type(4n + 1),
       .band:nth-of-type(even),
       .record__section:is(:nth-of-type(1), :nth-of-type(even)),
       .job:first-of-type {

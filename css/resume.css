@@ -165,6 +165,7 @@
   .terms {
     grid-template-columns: 12rem minmax(0, 1fr);
     gap: 1.1rem 1.6rem;
+    align-items: baseline;
     margin-bottom: 2em;
   }
 
@@ -360,6 +361,7 @@
   .terms {
     grid-template-columns: var(--p-meta) minmax(0, 1fr);
     gap: var(--p-half) var(--p-gutter);
+    align-items: baseline;
     margin: 0;
   }
 

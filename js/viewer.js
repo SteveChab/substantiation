@@ -22,9 +22,11 @@
       return;
     }
 
-    e.preventDefault();               // cancel the invoker command; we open the dialog inside the transition
+    // Cancel the invoker command so the dialog opens inside the view transition.
+    e.preventDefault();
     tile.style.viewTransitionName = 'zoom';
-    dlg.style.transition = 'none';    // the transition does the fading; avoid fading twice
+    // The view transition fades the dialog, so drop the CSS fade.
+    dlg.style.transition = 'none';
     var vt = document.startViewTransition(function () {
       tile.style.viewTransitionName = '';
       big.style.viewTransitionName = 'zoom';
