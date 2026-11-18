@@ -230,7 +230,7 @@
 
     @bottom-right {
       content: counter(page) " of " counter(pages);
-      font: 700 6.5pt / 1 'Roboto Print', 'Roboto', sans-serif;
+      font: 700 7.5pt / 1 'Roboto Print', 'Roboto', sans-serif;
       letter-spacing: .065em;
     }
   }
@@ -244,6 +244,7 @@
     --p-gutter: .18in;
     --p-line: 12.5pt;
     --p-half: 6.25pt;
+    --p-eyebrow: 7.5pt;
     --p-ink: #000;
     --p-quiet: #555;
   }
@@ -288,7 +289,7 @@
     margin: 0 0 calc(var(--p-line) * 2.5);
     padding: 0 0 var(--p-half);
     border-bottom: 1pt solid var(--p-ink);
-    font: var(--eyebrow-weight) 6.5pt / 1 var(--font-sans);
+    font: var(--eyebrow-weight) var(--p-eyebrow) / 1 var(--font-sans);
     letter-spacing: var(--eyebrow-track);
     text-transform: uppercase;
     list-style: none;
@@ -332,15 +333,19 @@
   .roles {
     grid-column: 2;
     grid-row: 3;
-    gap: 5pt var(--p-line);
-    font-size: 6.5pt;
+    gap: 5pt 9pt;
+    font-size: 7pt;
+    letter-spacing: .04em;
     line-height: 1;
   }
 
+  /* The label sits in its own grid column, not absolutely positioned. Positioned boxes paint last, which put each label after its section in the PDF text. */
   .record__section {
-    position: relative;
+    display: grid;
+    grid-template-columns: var(--p-label) minmax(0, 1fr);
+    column-gap: var(--p-gutter);
     margin: 0 0 var(--p-line);
-    padding: var(--p-half) 0 0 calc(var(--p-label) + var(--p-gutter));
+    padding: var(--p-half) 0 0;
     border-top: 1pt solid var(--p-ink);
     break-inside: auto;
   }
@@ -348,15 +353,16 @@
   .record__section--web-only { display: none; }
 
   .record__label {
-    position: absolute;
-    top: var(--p-half);
-    left: 0;
+    grid-column: 1;
     margin: 0;
-    font-size: 6.5pt;
+    font-size: var(--p-eyebrow);
     line-height: var(--p-line);
   }
 
-  .record__body { padding: 0; }
+  .record__body {
+    grid-column: 2;
+    padding: 0;
+  }
 
   .terms {
     grid-template-columns: var(--p-meta) minmax(0, 1fr);
@@ -390,22 +396,29 @@
 
   /* One employer a page. The second starts page two under a full-width rule, pulled back across the label column. */
   .job + .job {
-    position: relative;
+    grid-template-columns: var(--p-label) var(--p-meta) minmax(0, 1fr);
     margin: 0 0 0 calc(-1 * (var(--p-label) + var(--p-gutter)));
-    padding: var(--p-half) 0 0 calc(var(--p-label) + var(--p-gutter));
+    padding: var(--p-half) 0 0;
     border-top: 1pt solid var(--p-ink);
     break-before: page;
   }
 
+  /* The repeated label takes a fourth, leading column so it stays first in the PDF text. */
   .job + .job .job__continued {
     display: block;
-    position: absolute;
-    top: var(--p-half);
-    left: 0;
+    grid-column: 1;
+    grid-row: 1;
     margin: 0;
-    font-size: 6.5pt;
+    font-size: var(--p-eyebrow);
     line-height: var(--p-line);
   }
+
+  .job + .job .job__org,
+  .job + .job .job__place { grid-column: 2; }
+
+  .job + .job .job__blurb { grid-column: 3; }
+
+  .job + .job .role { grid-column: 2 / -1; }
 
   .job__org {
     grid-column: 1;
@@ -420,7 +433,7 @@
     grid-column: 1;
     grid-row: 2;
     margin: var(--p-half) 0 0;
-    font-size: 6.5pt;
+    font-size: var(--p-eyebrow);
     line-height: 1;
     color: var(--p-quiet);
   }
@@ -454,7 +467,7 @@
   }
 
   .role__title {
-    font-size: 6.5pt;
+    font-size: 8pt;
     line-height: 1.25;
   }
 
